@@ -9,7 +9,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
 
     return (
         <>
-            <Form submitListener={() => onSubmit()} submitButtonText={"Submit"}>
+            <Form submitListener={() => onSubmit("Test Initial Title", "Test Initial Text")} submitButtonText={"Submit"}>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
