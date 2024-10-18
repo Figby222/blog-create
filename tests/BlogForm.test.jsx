@@ -261,4 +261,17 @@ describe("Errors", () => {
         expect(screen.queryByText(/Test Title Error/i))
             .toBeInTheDocument();
     })
+
+    it("Sets different provided error", () => {
+        const errors = [
+            { field: "title", message: "Test Different Title Error" }
+        ]
+
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .not.toBeInTheDocument();
+        expect(screen.queryByText(/Test Different Title Error/i))
+            .toBeInTheDocument();
+    })
 })
