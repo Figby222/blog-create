@@ -17,14 +17,14 @@ describe("Title", () => {
     it("Exists", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
 
-        expect(screen.queryByText(/Title/i))
+        expect(screen.queryByText("Title"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} intialText={""} />);
 
-        expect(screen.queryByLabelText(/Title/i))
+        expect(screen.queryByLabelText("Title"))
             .toBeInTheDocument();
     })
 
@@ -51,14 +51,14 @@ describe("Text", () => {
     it("Exists", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
 
-        expect(screen.queryByText(/Text/i))
+        expect(screen.queryByText("Text"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
 
-        expect(screen.queryByLabelText(/Text/i))
+        expect(screen.queryByLabelText("Text"))
             .toBeInTheDocument();;;;
     })
 })
