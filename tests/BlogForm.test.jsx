@@ -229,4 +229,23 @@ describe("Submitting the form", () => {
 
         expect(onSubmit).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text");
     })
+
+    it("Calls onSubmit with different typed in values", async () => {
+        const onSubmit = vi.fn(() => {});
+
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+        
+        await user.type(titleInput, "Test Different Typed In Title");
+        await user.type(textInput, "Test Different Typed In Text");
+
+        await user.click(submitButton);
+
+        expect(onSubmit).toHaveBeenCalledWith("Test Different Typed In Title", "Test Different Typed In Text");
+    })
 })
