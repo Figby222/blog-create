@@ -34,6 +34,17 @@ describe("Title", () => {
         expect(screen.queryByLabelText(/Title/i).value)
             .toMatch(/Test Initial Title/i);
     })
+
+    it("Has a different initial value", () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={"Test Different Initial Title"} initialText={""} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        expect(titleInput.value)
+            .not.toMatch(/Test Initial Title/i);
+        expect(titleInput.value)
+            .toMatch(/Test Different Initial Title/i);
+    })
 })
 
 describe("Text", () => {
