@@ -1,0 +1,10 @@
+NewBlogPost
+Set onSubmit to createBlogPost prop
+render BlogForm component & pass onSubmit
+
+EditBlogForm
+if Loading display Loading
+if Error display Error
+get Blog info from API using useAllData hook
+Set onSubmit to editBlogPost prop
+render BlogForm with blog info & onSubmit
