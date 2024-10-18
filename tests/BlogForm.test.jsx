@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../lib/testing-utils.jsx";
 import BlogForm from "../src/components/BlogForm.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("BlogForm existence", () => {
     it("Exists", () => {
@@ -44,6 +45,19 @@ describe("Title", () => {
             .not.toMatch(/Test Initial Title/i);
         expect(titleInput.value)
             .toMatch(/Test Different Initial Title/i);
+    })
+
+    it("Has typed in value", async () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Typed In Title");
+
+        expect(titleInput.value)
+            .toMatch(/Test Typed In Title/i);
     })
 })
 
