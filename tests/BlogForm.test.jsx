@@ -112,4 +112,17 @@ describe("Text", () => {
         expect(textInput.value)
             .toMatch(/Test Different Initial Text/i);
     })
+
+    it("Has typed in value", async () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        const user = userEvent.setup();
+
+        await user.type(textInput, "Test Typed In Text");
+
+        expect(textInput.value)
+            .toMatch(/Test Typed In Text/i);
+    })
 })
