@@ -1,8 +1,9 @@
 {
-  "name": "react-template",
+  "name": "blog-create",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "A react repository used to Create, Update, & Delete from my Blog-API",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
