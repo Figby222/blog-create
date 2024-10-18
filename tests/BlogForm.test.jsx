@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../lib/testing-utils.jsx";
 import BlogForm from "../src/components/BlogForm.jsx";
@@ -158,5 +158,20 @@ describe("Submit button", () => {
 
         expect(screen.queryByRole("button").textContent)
             .toMatch(/Submit/i);
+    })
+})
+
+describe("Submitting the form", () => {
+    it("Calls onSubmit on submit", async () => {
+        const onSubmit = vi.fn(() => {});
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} />);
+    
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+    
+        const user = userEvent.setup();
+        
+        await user.click(submitButton);
+    
+        expect(onSubmit).toHaveBeenCalled();
     })
 })
