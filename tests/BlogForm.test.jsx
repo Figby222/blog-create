@@ -198,6 +198,20 @@ describe("Submitting the form", () => {
             .toHaveBeenCalledWith("Test Initial Title", "Test Initial Text");
     })
 
+    it("Calls onSubmit with different provided field values", async () => {
+        const onSubmit = vi.fn(() => {});
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Different Initial Title"} initialText={"Test Different Initial Text"} />);
+
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+        
+        const user = userEvent.setup();
+
+        await user.click(submitButton);
+        
+        expect(onSubmit)
+            .toHaveBeenCalledWith("Test Different Initial Title", "Test Different Initial Text");
+    })
+
     it("Calls onSubmit with typed in field values", async () => {
         const onSubmit = vi.fn(() => {});
         render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} />);
