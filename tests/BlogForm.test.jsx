@@ -274,4 +274,18 @@ describe("Errors", () => {
         expect(screen.queryByText(/Test Different Title Error/i))
             .toBeInTheDocument();
     })
+
+    it("Can set multiple errors", () => {
+        const errors = [
+            { field: "title", message: "Test Title Error" },
+            { field: "title", message: "Test Different Title Error" }
+        ]
+
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .toBeInTheDocument();
+        expect(screen.queryByText(/Test Different Title/i))
+            .toBeInTheDocument();
+    })
 })
