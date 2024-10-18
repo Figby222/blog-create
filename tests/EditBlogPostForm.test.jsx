@@ -22,3 +22,16 @@ describe("useAllData", () => {
         expect(mockUseAllData).toHaveBeenCalled();
     })
 })
+
+describe("Loading", () => {
+    it("Renders loading when loading", () => {
+        const mockUseAllData = getUseAllDataMock(false, true, null);
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const loadingElements = screen.queryAllByText(/Loading/i);
+
+        expect(loadingElements.length)
+            .toBeGreaterThanOrEqual(1);
+    })
+})
