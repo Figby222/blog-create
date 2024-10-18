@@ -34,4 +34,18 @@ describe("Loading", () => {
         expect(loadingElements.length)
             .toBeGreaterThanOrEqual(1);
     })
+
+    it("Doesn't render loading when not loading", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text",
+        })
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const loadingElements = screen.queryAllByText(/Loading/i);
+
+        expect(loadingElements.length)
+            .not.toBeGreaterThanOrEqual(1);
+    })
 })
