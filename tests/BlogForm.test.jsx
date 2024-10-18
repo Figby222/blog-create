@@ -144,3 +144,12 @@ describe("Text", () => {
             
     })
 })
+
+describe("Submit button", () => {
+    it("Exists", () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+    
+        expect(screen.queryByRole("button"))
+            .toBeInTheDocument();
+    })
+})
