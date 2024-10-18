@@ -7,6 +7,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
                 Title
                 <input type="text" name="title" id="title" />
             </label>
+            <p className="text">Text</p>
         </>
     )
 };
