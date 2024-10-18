@@ -125,4 +125,20 @@ describe("Text", () => {
         expect(textInput.value)
             .toMatch(/Test Typed In Text/i);
     })
+
+    it("Has a different typed in value", async () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        const user = userEvent.setup();
+
+        await user.type(textInput, "Test Different Typed In Text");
+
+        expect(textInput.value)
+            .not.toMatch(/Test Typed In Text/i);
+        expect(textInput.value)
+            .toMatch(/Test Different Typed In Text/i);
+            
+    })
 })
