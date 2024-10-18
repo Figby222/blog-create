@@ -6,7 +6,7 @@ import Form from "./Form.jsx";
 const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     const [ title, setTitle ] = useState(initialTitle);
     const [ text, setText ] = useState(initialText);
-    const [ submitArgs, setSubmitArgs ] = useState([ "Test Initial Title", "Test Initial Text" ]);
+    const [ submitArgs, setSubmitArgs ] = useState([ initialTitle, initialText ]);
 
     const setTitleState = (value) => {
         setSubmitArgs((prevSubmitArgs) => [ "Test Typed In Title", prevSubmitArgs[1]]);
