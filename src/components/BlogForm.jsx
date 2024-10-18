@@ -7,11 +7,9 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     const [ title, setTitle ] = useState(initialTitle);
     const [ text, setText ] = useState(initialText);
 
-    onSubmit();
-    
     return (
         <>
-            <Form submitListener={() => {}} submitButtonText={"Submit"}>
+            <Form submitListener={() => onSubmit()} submitButtonText={"Submit"}>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
