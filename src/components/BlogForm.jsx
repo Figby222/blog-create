@@ -1,3 +1,3 @@
-const BlogForm = "";
+const BlogForm = () => {};
 
 export default BlogForm;
