@@ -249,3 +249,16 @@ describe("Submitting the form", () => {
         expect(onSubmit).toHaveBeenCalledWith("Test Different Typed In Title", "Test Different Typed In Text");
     })
 })
+
+describe("Errors", () => {
+    it("Sets provided error", () => {
+        const errors = [
+            { field: "title", message: "Test Title Error" }
+        ]
+        
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .toBeInTheDocument();
+    })
+})
