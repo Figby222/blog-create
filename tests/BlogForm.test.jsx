@@ -16,28 +16,28 @@ describe("BlogForm existence", () => {
 
 describe("Title", () => {
     it("Exists", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         expect(screen.queryByText("Title"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} intialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} intialText={""} errors={[]} />);
 
         expect(screen.queryByLabelText("Title"))
             .toBeInTheDocument();
     })
 
     it("Has initial value", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={"Test Initial Title"} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={"Test Initial Title"} initialText={""} errors={[]} />);
 
         expect(screen.queryByLabelText(/Title/i).value)
             .toMatch(/Test Initial Title/i);
     })
 
     it("Has a different initial value", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={"Test Different Initial Title"} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={"Test Different Initial Title"} initialText={""} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -48,7 +48,7 @@ describe("Title", () => {
     })
 
     it("Has typed in value", async () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -61,7 +61,7 @@ describe("Title", () => {
     })
     
     it("Has a different type in value", async () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -78,14 +78,14 @@ describe("Title", () => {
 
 describe("Text", () => {
     it("Exists", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         expect(screen.queryByText("Text"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         expect(screen.queryByLabelText("Text"))
             .toBeInTheDocument();;;;
@@ -98,14 +98,14 @@ describe("Text", () => {
 
 
     it("Has initial value", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Initial Text"} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Initial Text"} errors={[]} />);
 
         expect(screen.queryByLabelText(/Text/i).value)
             .toMatch(/Test Initial Text/i);
     })
 
     it("Has a different initial value", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Different Initial Text"} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Different Initial Text"} errors={[]} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -116,7 +116,7 @@ describe("Text", () => {
     })
 
     it("Has typed in value", async () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -129,7 +129,7 @@ describe("Text", () => {
     })
 
     it("Has a different typed in value", async () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -147,14 +147,14 @@ describe("Text", () => {
 
 describe("Submit button", () => {
     it("Exists", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
     
         expect(screen.queryByRole("button"))
             .toBeInTheDocument();
     })
 
     it("Has submit text", () => {
-        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={[]} />);
 
         expect(screen.queryByRole("button").textContent)
             .toMatch(/Submit/i);
@@ -164,7 +164,7 @@ describe("Submit button", () => {
 describe("Submitting the form", () => {
     it("Calls onSubmit on submit", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} errors={[]} />);
     
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
     
@@ -177,7 +177,7 @@ describe("Submitting the form", () => {
 
     it("Doesn't call onSubmit when form hasn't been submitted", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText = {"Test Initial Text"} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText = {"Test Initial Text"} errors={[]} />);
 
         expect(onSubmit)
             .not.toHaveBeenCalled();
@@ -186,7 +186,7 @@ describe("Submitting the form", () => {
 
     it("Calls onSubmit with provided field values", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} errors={[]} />);
 
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
@@ -200,7 +200,7 @@ describe("Submitting the form", () => {
 
     it("Calls onSubmit with different provided field values", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Different Initial Title"} initialText={"Test Different Initial Text"} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Different Initial Title"} initialText={"Test Different Initial Text"} errors={[]} />);
 
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
         
@@ -214,7 +214,7 @@ describe("Submitting the form", () => {
 
     it("Calls onSubmit with typed in field values", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -233,7 +233,7 @@ describe("Submitting the form", () => {
     it("Calls onSubmit with different typed in values", async () => {
         const onSubmit = vi.fn(() => {});
 
-        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -255,7 +255,7 @@ describe("Errors", () => {
         const errors = [
             { field: "title", message: "Test Title Error" }
         ]
-        
+
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
 
         expect(screen.queryByText(/Test Title Error/i))
