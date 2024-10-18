@@ -10,7 +10,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     return (
         <>
             <Form submitListener={() => onSubmit(title, text)} submitButtonText={"Submit"}>
-                <p className="errors">Test Title Error</p>
+                <p className="errors">{ errors.length > 0 && errors[0].message }</p>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
