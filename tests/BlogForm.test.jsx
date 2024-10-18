@@ -65,11 +65,22 @@ describe("Text", () => {
 
 
 
-    
+
     it("Has initial value", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Initial Text"} />);
 
         expect(screen.queryByLabelText(/Text/i).value)
             .toMatch(/Test Initial Text/i);
+    })
+
+    it("Has a different initial value", () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Different Initial Text"} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        expect(textInput.value)
+            .not.toMatch(/Test Initial Text/i);
+        expect(textInput.value)
+            .toMatch(/Test Different Initial Text/i);
     })
 })
