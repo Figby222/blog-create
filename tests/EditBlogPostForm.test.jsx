@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
-import { render } from "../lib/testing-utils.jsx";
+import { render, getUseAllDataMock } from "../lib/testing-utils.jsx";
 import EditBlogPostForm from "../src/components/EditBlogPostForm.jsx";
 
 describe("EditBlogPostForm existence", () => {
@@ -10,5 +10,15 @@ describe("EditBlogPostForm existence", () => {
 
     it("Is a function", () => {
         expect(EditBlogPostForm).toBeTypeOf("function");
+    })
+})
+
+describe("useAllData", () => {
+    it("Calls useAllData", () => {
+        const mockUseAllData = getUseAllDataMock(false, true, null);
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(mockUseAllData).toHaveBeenCalled();
     })
 })
