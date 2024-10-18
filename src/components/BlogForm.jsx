@@ -15,7 +15,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
                     onChange={(e) => setTitle(e.target.value)}
                 />
             </label>
-            <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText("Test Typed In Text")} />
+            <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
         </>
     )
 };

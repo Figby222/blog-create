@@ -94,6 +94,8 @@ describe("Text", () => {
 
 
 
+    
+
 
     it("Has initial value", () => {
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Initial Text"} />);
