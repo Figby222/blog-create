@@ -174,4 +174,13 @@ describe("Submitting the form", () => {
     
         expect(onSubmit).toHaveBeenCalled();
     })
+
+    it("Doesn't call onSubmit when form hasn't been submitted", async () => {
+        const onSubmit = vi.fn(() => {});
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText = {"Test Initial Text"} />);
+
+        expect(onSubmit)
+            .not.toHaveBeenCalled();
+            
+    })
 })
