@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import TextBox from "./TextBox.jsx";
 import { useState } from "react";
 import Form from "./Form.jsx";
+import Errors from "./Errors.jsx";
 
 const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     const [ title, setTitle ] = useState(initialTitle);
@@ -10,7 +11,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     return (
         <>
             <Form submitListener={() => onSubmit(title, text)} submitButtonText={"Submit"}>
-                <p className="errors">{ errors.length > 0 && errors[0].message }</p>
+                <Errors errors={errors} />
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
