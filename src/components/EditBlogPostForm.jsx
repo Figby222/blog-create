@@ -1,3 +1,3 @@
-const EditBlogPostForm = "";
+const EditBlogPostForm = () => {};
 
 export default EditBlogPostForm;
