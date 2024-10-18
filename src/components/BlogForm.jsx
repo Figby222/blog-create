@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
     return (
         <>
+            <p className="title">Title</p>
         </>
     )
 };
