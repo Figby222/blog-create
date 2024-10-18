@@ -8,7 +8,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
                 Title
                 <input type="text" name="title" id="title" value={initialTitle} />
             </label>
-            <TextBox label={"Text"} placeholder={""} value={""} onChange={() => {}} />
+            <TextBox label={"Text"} placeholder={""} value={"Test Initial Text"} onChange={() => {}} />
         </>
     )
 };
