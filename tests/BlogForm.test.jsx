@@ -183,4 +183,18 @@ describe("Submitting the form", () => {
             .not.toHaveBeenCalled();
             
     })
+
+    it("Calls onSubmit with provided field values", async () => {
+        const onSubmit = vi.fn(() => {});
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} />);
+
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.click(submitButton);
+
+        expect(onSubmit)
+            .toHaveBeenCalledWith("Test Initial Title", "Test Initial Text");
+    })
 })
