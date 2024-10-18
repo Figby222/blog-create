@@ -28,3 +28,12 @@ describe("Title", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("Text", () => {
+    it("Exists", () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+
+        expect(screen.queryByText(/Text/i))
+            .toBeInTheDocument();
+    })
+})
