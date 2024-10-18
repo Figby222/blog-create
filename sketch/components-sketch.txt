@@ -8,3 +8,12 @@ if Error display Error
 get Blog info from API using useAllData hook
 Set onSubmit to editBlogPost prop
 render BlogForm with blog info & onSubmit
+
+BlogForm
+State for title & text
+Render Form with
+input for title &
+textarea for text
+
+BlogForm props
+onSubmit, title (optional), & text(optional)
