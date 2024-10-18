@@ -61,4 +61,15 @@ describe("Text", () => {
         expect(screen.queryByLabelText("Text"))
             .toBeInTheDocument();;;;
     })
+
+
+
+
+    
+    it("Has initial value", () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={"Test Initial Text"} />);
+
+        expect(screen.queryByLabelText(/Text/i).value)
+            .toMatch(/Test Initial Text/i);
+    })
 })
