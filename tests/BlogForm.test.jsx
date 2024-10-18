@@ -59,6 +59,21 @@ describe("Title", () => {
         expect(titleInput.value)
             .toMatch(/Test Typed In Title/i);
     })
+    
+    it("Has a different type in value", async () => {
+        render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Different Typed In Title");
+
+        expect(titleInput.value)
+            .not.toMatch(/Test Typed In Title/i);
+        expect(titleInput.value)
+            .toMatch(/Test Different Typed In Title/i);
+    })
 })
 
 describe("Text", () => {
