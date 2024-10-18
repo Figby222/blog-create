@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
+    const { error, loading, data} = useAllData();
+    
     return (
         <>
         </>
