@@ -146,6 +146,26 @@ describe("Title", () => {
         expect(titleInput.value)
             .toMatch(/Test Typed In Text/i);
     })
+
+    it("Has different typed in value", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Different Typed In Text");
+
+        expect(titleInput.value)
+            .not.toMatch(/Test Typed In Text/i)
+        expect(titleInput.value)
+            .toMatch(/Test Different Typed In Text/i);
+    })
 })
 
 describe("Text", () => {
