@@ -151,4 +151,18 @@ describe("Text", () => {
         expect(screen.queryByLabelText(/Text/i))
             .toBeInTheDocument();
     })
+
+    it("Has provided initial value", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        expect(textInput.value)
+            .toMatch(/Test Text/i);
+    })
 })
