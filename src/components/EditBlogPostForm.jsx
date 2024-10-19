@@ -27,7 +27,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
             </label>
             <TextBox label={"Text"} placeholder={""} 
                 value={text} 
-                onChange={(e) => setText("Test Typed In Text")} 
+                onChange={(value) => setText(value)} 
             />
         </>
     )
