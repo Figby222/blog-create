@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import TextBox from "./TextBox.jsx";
-import Form from "./Form.jsx";
+import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
@@ -14,24 +14,9 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
         return <h1 className="error">An error has occurred</h1>
     }
 
-    const [ title, setTitle ] = useState(data.title);
-    const [ text, setText ] = useState(data.text);
-
     return (
         <>
-            <Form submitListener={() => {}} submitButtonText={"Submit"}>
-                <label className="title" htmlFor="title">
-                    Title
-                    <input type="text" name="title" id="title" 
-                        value={title} 
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </label>
-                <TextBox label={"Text"} placeholder={""} 
-                    value={text} 
-                    onChange={(value) => setText(value)} 
-                />
-            </Form>
+            <BlogForm onSubmit={() => {}} initialTitle={data.title} initialText={data.text} errors={[]} />
         </>
     )
 };
