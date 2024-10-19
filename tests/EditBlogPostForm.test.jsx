@@ -92,9 +92,23 @@ describe("Title", () => {
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
-        
+
 
         expect(screen.queryByLabelText(/Title/i))
+            .toBeInTheDocument();
+    })
+})
+
+describe("Text", () => {
+    it("Exists", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByText(/Text/i))
             .toBeInTheDocument();
     })
 })
