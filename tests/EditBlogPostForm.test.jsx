@@ -49,3 +49,13 @@ describe("Loading", () => {
             .not.toBeGreaterThanOrEqual(1);
     })
 })
+
+describe("Error", () => {
+    it("Renders error on error", () => {
+        const mockUseAllData = getUseAllDataMock(true, false, null);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByText(/Error/i))
+            .toBeInTheDocument();
+    })
+})
