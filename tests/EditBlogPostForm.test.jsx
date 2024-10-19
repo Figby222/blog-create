@@ -71,3 +71,17 @@ describe("Error", () => {
             .not.toBeInTheDocument();
     })
 })
+
+describe("Title", () => {
+    it("Exists", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        })
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByText(/Title/i))
+            .toBeInTheDocument();
+    })
+})
