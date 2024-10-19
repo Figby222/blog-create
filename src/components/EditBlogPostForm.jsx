@@ -14,10 +14,17 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
         return <h1 className="error">An error has occurred</h1>
     }
 
+    const [ errors, setErrors ] = useState([]);
+
+    const onSubmit = async (title, text) => {
+        const response = await updateBlogPut(title, text);
+
+        response.errors && setErrors([ { field: "title", message: "Test Title Error" } ]);
+    }
 
     return (
         <>
-            <BlogForm onSubmit={(title, text) => updateBlogPut(title, text)} initialTitle={data.title} initialText={data.text} errors={[]} />
+            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
         </>
     )
 };
