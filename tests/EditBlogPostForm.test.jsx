@@ -222,4 +222,22 @@ describe("Text", () => {
         expect(textInput.value)
             .toMatch(/Test Different Text/i);
     })
+
+    it("Has typed in value", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        const user = userEvent.setup();
+
+        await user.type(textInput, "Test Typed In Text");
+
+        expect(textInput.value)
+            .toMatch(/Test Typed In Text/i);
+    })
 })
