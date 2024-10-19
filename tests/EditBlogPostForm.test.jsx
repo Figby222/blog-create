@@ -81,7 +81,7 @@ describe("Title", () => {
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
 
-        expect(screen.queryByText(/Title/i))
+        expect(screen.queryByText("Title"))
             .toBeInTheDocument();
     })
 
@@ -138,7 +138,7 @@ describe("Text", () => {
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
 
-        expect(screen.queryByText(/Text/i))
+        expect(screen.queryByText("Text"))
             .toBeInTheDocument();
     })
 
