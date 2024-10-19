@@ -9,6 +9,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
 
     return (
         <>
+            <h1 className="error">An error has occurred</h1>
         </>
     )
 };
