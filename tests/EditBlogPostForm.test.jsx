@@ -111,4 +111,16 @@ describe("Text", () => {
         expect(screen.queryByText(/Text/i))
             .toBeInTheDocument();
     })
+
+    it("Is has an input", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByLabelText(/Text/i))
+            .toBeInTheDocument();
+    })
 })
