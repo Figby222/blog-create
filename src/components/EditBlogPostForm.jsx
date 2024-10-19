@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import TextBox from "./TextBox.jsx";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     const { error, loading, data} = useAllData();
@@ -17,7 +18,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
                 Title
                 <input type="text" name="title" id="title" />
             </label>
-            <p className="text">Text</p>
+            <TextBox label={"Text"} placeholder={""} value={""} onChange={() => {}} />
         </>
     )
 };
