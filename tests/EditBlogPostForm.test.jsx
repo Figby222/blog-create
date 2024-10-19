@@ -275,4 +275,16 @@ describe("Submit button", () => {
         expect(screen.queryByRole("button"))
             .toBeInTheDocument();
     })
+
+    it("Has submit text", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByRole("button").textContent)
+            .toMatch(/Submit/i);
+    })
 })
