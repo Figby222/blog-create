@@ -19,7 +19,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
 
     return (
         <>
-            <Form submitListener={() => {}} submitButtonText={""}>
+            <Form submitListener={() => {}} submitButtonText={"Submit"}>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
