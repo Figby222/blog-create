@@ -368,4 +368,28 @@ describe("Submission", () => {
         expect(mockUpdateBlogPut)
             .toHaveBeenCalledWith("Test Different Title", "Test Different Text");
     })
+
+    it("Calls updateBlogPost with typed in values", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+        
+        const user = userEvent.setup();
+        
+        await user.type(titleInput, "Test Typed In Title");
+        await user.type(textInput, "Test Typed In Text");
+
+        await user.click(submitButton);
+
+        expect(mockUpdateBlogPut).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text");
+    })
 })
