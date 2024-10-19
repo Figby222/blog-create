@@ -14,6 +14,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
         return <h1 className="error">An error has occurred</h1>
     }
 
+    updateBlogPut();
     return (
         <>
             <BlogForm onSubmit={() => {}} initialTitle={data.title} initialText={data.text} errors={[]} />
