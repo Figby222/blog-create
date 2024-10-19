@@ -248,7 +248,7 @@ describe("Text", () => {
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
-        
+
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -260,5 +260,19 @@ describe("Text", () => {
             .not.toMatch(/Test Typed In Value/i)
         expect(textInput.value)
             .toMatch(/Test Different Typed In Value/i);
+    })
+})
+
+describe("Submit button", () => {
+    it("Exists", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByRole("button"))
+            .toBeInTheDocument();
     })
 })
