@@ -314,4 +314,18 @@ describe("Submission", () => {
 
         expect(mockUpdateBlogPut).toHaveBeenCalled();
     })
+
+    it("Only calls updateBlogPut on submit", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} />);
+
+        expect(mockUpdateBlogPut)
+            .not.toHaveBeenCalled();
+    })
 })
