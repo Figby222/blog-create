@@ -13,6 +13,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
 
     return (
         <>
+            <p className="title">Title</p>
         </>
     )
 };
