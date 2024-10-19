@@ -19,7 +19,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     const onSubmit = async (title, text) => {
         const response = await updateBlogPut(title, text);
 
-        response.errors && setErrors([ response.errors[0] ]);
+        response.errors && setErrors(response.errors);
     }
 
     return (
