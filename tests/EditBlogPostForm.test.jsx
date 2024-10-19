@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import { render, getUseAllDataMock } from "../lib/testing-utils.jsx";
 import EditBlogPostForm from "../src/components/EditBlogPostForm.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("EditBlogPostForm existence", () => {
     it("Exists", () => {
@@ -126,6 +127,24 @@ describe("Title", () => {
             .not.toMatch(/Test Title/i)
         expect(titleInput.value)
             .toMatch(/Test Different Title/i);
+    })
+
+    it("Has typed in value", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Typed In Text");
+
+        expect(titleInput.value)
+            .toMatch(/Test Typed In Text/i);
     })
 })
 
