@@ -240,4 +240,25 @@ describe("Text", () => {
         expect(textInput.value)
             .toMatch(/Test Typed In Text/i);
     })
+
+    it("Has different typed in value", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+        
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        const user = userEvent.setup();
+
+        await user.type(textInput, "Test Different Typed In Value");
+
+        expect(textInput.value)
+            .not.toMatch(/Test Typed In Value/i)
+        expect(textInput.value)
+            .toMatch(/Test Different Typed In Value/i);
+    })
 })
