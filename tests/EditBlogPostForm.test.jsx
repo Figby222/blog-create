@@ -97,6 +97,20 @@ describe("Title", () => {
         expect(screen.queryByLabelText(/Title/i))
             .toBeInTheDocument();
     })
+
+    it("Has provided initial value", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        expect(titleInput.value)
+            .toMatch(/Test Title/i);
+    })
 })
 
 describe("Text", () => {
