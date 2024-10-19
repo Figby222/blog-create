@@ -167,4 +167,20 @@ describe("Text", () => {
         expect(textInput.value)
             .toMatch(/Test Text/i);
     })
+
+    it("Has different provided initial value", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Different Title",
+            text: "Test Different Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        expect(textInput.value)
+            .not.toMatch(/Test Text/i)
+        expect(textInput.value)
+            .toMatch(/Test Different Text/i);
+    })
 })
