@@ -111,6 +111,20 @@ describe("Title", () => {
         expect(titleInput.value)
             .toMatch(/Test Title/i);
     })
+
+    it("Has different provided initial value", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Different Title",
+            text: "Test Different Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+
+        expect(titleInput.value)
+            .toMatch(/Test Different Title/i);
+    })
 })
 
 describe("Text", () => {
