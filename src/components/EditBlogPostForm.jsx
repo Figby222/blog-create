@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import TextBox from "./TextBox.jsx";
+import { useState } from "react";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     const { error, loading, data} = useAllData();
@@ -12,11 +13,16 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
         return <h1 className="error">An error has occurred</h1>
     }
 
+    const [ title, setTitle ] = useState(data.title);
+
     return (
         <>
             <label className="title" htmlFor="title">
                 Title
-                <input type="text" name="title" id="title" value={data.title} />
+                <input type="text" name="title" id="title" 
+                    value={title} 
+                    onChange={(e) => setTitle("Test Typed In Text")}
+                />
             </label>
             <TextBox label={"Text"} placeholder={""} value={data.text} onChange={() => {}} />
         </>
