@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import TextBox from "./TextBox.jsx";
+import Form from "./Form.jsx";
 import { useState } from "react";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
@@ -18,17 +19,19 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
 
     return (
         <>
-            <label className="title" htmlFor="title">
-                Title
-                <input type="text" name="title" id="title" 
-                    value={title} 
-                    onChange={(e) => setTitle(e.target.value)}
+            <Form submitListener={() => {}} submitButtonText={""}>
+                <label className="title" htmlFor="title">
+                    Title
+                    <input type="text" name="title" id="title" 
+                        value={title} 
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                </label>
+                <TextBox label={"Text"} placeholder={""} 
+                    value={text} 
+                    onChange={(value) => setText(value)} 
                 />
-            </label>
-            <TextBox label={"Text"} placeholder={""} 
-                value={text} 
-                onChange={(value) => setText(value)} 
-            />
+            </Form>
         </>
     )
 };
