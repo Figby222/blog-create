@@ -16,7 +16,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
         <>
             <label className="title" htmlFor="title">
                 Title
-                <input type="text" name="title" id="title" value="Test Title" />
+                <input type="text" name="title" id="title" value={data.title} />
             </label>
             <TextBox label={"Text"} placeholder={""} value={""} onChange={() => {}} />
         </>
