@@ -14,6 +14,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     }
 
     const [ title, setTitle ] = useState(data.title);
+    const [ text, setText ] = useState(data.text);
 
     return (
         <>
@@ -24,7 +25,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
                     onChange={(e) => setTitle(e.target.value)}
                 />
             </label>
-            <TextBox label={"Text"} placeholder={""} value={data.text} onChange={() => {}} />
+            <TextBox label={"Text"} placeholder={""} 
+                value={text} 
+                onChange={(e) => setText("Test Typed In Text")} 
+            />
         </>
     )
 };
