@@ -393,3 +393,34 @@ describe("Submission", () => {
         expect(mockUpdateBlogPut).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text");
     })
 })
+
+describe("Submission Errors", () => {
+    it("Renders submission error", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({
+            errors: [
+                { field: "title", message: "Test Title Error"}
+            ]
+        }));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Invalid Title");
+        await user.type(textInput, "Test Invalid Text");
+
+        await user.click(submitButton);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .toBeInTheDocument();
+    })
+})
