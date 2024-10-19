@@ -288,3 +288,30 @@ describe("Submit button", () => {
             .toMatch(/Submit/i);
     })
 })
+
+describe("Submission", () => {
+    it("Calls updateBlogPut", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} />);
+
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, " Test More Information");
+        await user.type(textInput, " Test More Information");
+
+        await user.click(submitButton);
+
+        expect(mockUpdateBlogPut).toHaveBeenCalled();
+    })
+})
