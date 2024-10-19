@@ -58,4 +58,16 @@ describe("Error", () => {
         expect(screen.queryByText(/Error/i))
             .toBeInTheDocument();
     })
+
+    it("Only renders error on error", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "Test Title",
+            text: "Test Text"
+        });
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} />);
+
+        expect(screen.queryByText(/Error/i))
+            .not.toBeInTheDocument();
+    })
 })
