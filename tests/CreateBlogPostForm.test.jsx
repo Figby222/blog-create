@@ -161,4 +161,24 @@ describe("Errors", () => {
         expect(screen.queryByText(/Test Title Error/i))
             .toBeInTheDocument();
     })
+
+    it("Only renders error on error", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .not.toBeInTheDocument();
+    })
 })
