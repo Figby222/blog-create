@@ -6,7 +6,7 @@ const CreateBlogPostForm = ({ createBlogPost }) => {
 
     return (
         <>
-            <Form submitListener={() => createBlogPost()} submitButtonText={"Submit"}>
+            <Form submitListener={() => createBlogPost("Test Title", "Test Text")} submitButtonText={"Submit"}>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" />
