@@ -1,7 +1,8 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "../lib/testing-utils.jsx";
 import CreateBlogPostForm from "../src/components/CreateBlogPostForm.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("CreateBlogPostForm existence", () => {
     it("Exists", () => {
@@ -60,5 +61,26 @@ describe("Submit button", () => {
 
         expect(screen.queryByRole("button").textContent)
             .toMatch(/Submit/i);
+    })
+})
+
+describe("Submitting the form", () => {
+    it("Calls createBlogPost on submit", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(mockCreateBlogPost).toHaveBeenCalled();
     })
 })
