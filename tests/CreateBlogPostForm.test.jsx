@@ -20,4 +20,11 @@ describe("Title", () => {
         expect(screen.queryByText(/Title/i))
             .toBeInTheDocument();
     })
+
+    it("Is has an input", () => {
+        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+
+        expect(screen.queryByLabelText(/Title/i))
+            .toBeInTheDocument();
+    })
 })
