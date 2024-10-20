@@ -5,7 +5,7 @@ import Form from "./Form.jsx";
 const CreateBlogPostForm = ({ createBlogPost }) => {
     return (
         <>
-            <Form submitListener={() => {}} submitButtonText={""}>
+            <Form submitListener={() => {}} submitButtonText={"Submit"}>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" />
