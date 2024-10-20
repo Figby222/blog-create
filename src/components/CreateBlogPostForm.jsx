@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 const CreateBlogPostForm = ({ createBlogPost }) => {
     return (
         <>
-            <p className="title">Title</p>
+            <label className="title" htmlFor="title">
+                Title
+                <input type="text" name="title" id="title" />
+            </label>
         </>
     )
 };
