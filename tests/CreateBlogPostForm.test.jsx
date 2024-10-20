@@ -36,4 +36,11 @@ describe("Text", () => {
         expect(screen.queryByText(/Text/i))
             .toBeInTheDocument();
     })
+
+    it("Is has an input", () => {
+        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+
+        expect(screen.queryByLabelText(/Text/i))
+            .toBeInTheDocument();
+    })
 })
