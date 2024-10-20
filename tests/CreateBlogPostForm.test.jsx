@@ -54,4 +54,11 @@ describe("Submit button", () => {
         expect(submitButton)
             .toBeInTheDocument();
     })
+
+    it("Has submit text", () => {
+        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+
+        expect(screen.queryByRole("button").textContent)
+            .toMatch(/Submit/i);
+    })
 })
