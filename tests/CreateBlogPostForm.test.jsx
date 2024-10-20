@@ -119,4 +119,23 @@ describe("Submitting the form", () => {
         expect(mockCreateBlogPost)
             .toHaveBeenCalledWith("Test Title", "Test Text");
     })
+
+    it("Calls createBlogPost with different values", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Different Title");
+        await user.type(textInput, "Test Different Text");
+
+        await user.click(submitButton);
+
+        expect(mockCreateBlogPost)
+            .toHaveBeenCalledWith("Test Different Title", "Test Different Text");
+    })
 })
