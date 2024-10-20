@@ -18,7 +18,7 @@ describe("Title", () => {
     it("Exists", () => {
         render(<CreateBlogPostForm createBlogPost={() => ({})} />);
 
-        expect(screen.queryByText(/Title/i))
+        expect(screen.queryByText("Title"))
             .toBeInTheDocument();
     })
 
@@ -34,7 +34,7 @@ describe("Text", () => {
     it("Exists", () => {
         render(<CreateBlogPostForm createBlogPost={() => ({})} />);
 
-        expect(screen.queryByText(/Text/i))
+        expect(screen.queryByText("Text"))
             .toBeInTheDocument();
     })
 
