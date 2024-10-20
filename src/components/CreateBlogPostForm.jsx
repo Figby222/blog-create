@@ -3,6 +3,7 @@ import TextBox from "./TextBox.jsx";
 import Form from "./Form.jsx";
 
 const CreateBlogPostForm = ({ createBlogPost }) => {
+    createBlogPost();
     return (
         <>
             <Form submitListener={() => {}} submitButtonText={"Submit"}>
@@ -11,7 +12,6 @@ const CreateBlogPostForm = ({ createBlogPost }) => {
                     <input type="text" name="title" id="title" />
                 </label>
                 <TextBox label={"Text"} placeholder={""} value={""} onChange={() => {}} />
-
             </Form>
         </>
     )
