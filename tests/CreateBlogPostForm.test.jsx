@@ -44,3 +44,14 @@ describe("Text", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("Submit button", () => {
+    it("Exists", () => {
+        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+
+        const submitButton = screen.queryByRole("button");
+        
+        expect(submitButton)
+            .toBeInTheDocument();
+    })
+})
