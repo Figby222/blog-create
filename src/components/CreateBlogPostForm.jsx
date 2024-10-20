@@ -9,7 +9,7 @@ const CreateBlogPostForm = ({ createBlogPost }) => {
     const onSubmit = async (title, text) => {
         const response = await createBlogPost(title, text);
 
-        response.errors && setErrors([ { field: "title", message: "Test Title Error" } ]);
+        response.errors && setErrors([ response.errors[0] ]);
     }
     return (
         <>
