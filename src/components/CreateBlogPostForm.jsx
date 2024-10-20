@@ -5,7 +5,7 @@ import BlogForm from "./BlogForm.jsx";
 const CreateBlogPostForm = ({ createBlogPost }) => {
     return (
         <>
-            <BlogForm onSubmit={(title, text) => createBlogPost(title, text)} initialTitle={""} initialText={""} errors={[]} />
+            <BlogForm onSubmit={(title, text) => createBlogPost(title, text)} initialTitle={""} initialText={""} errors={[ { field: "title", message: "Test Title Error" }]} />
         </>
     )
 };
