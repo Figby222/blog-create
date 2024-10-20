@@ -12,3 +12,12 @@ describe("CreateBlogPostForm existence", () => {
         expect(CreateBlogPostForm).toBeTypeOf("function");
     })
 })
+
+describe("Title", () => {
+    it("Exists", () => {
+        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+
+        expect(screen.queryByText(/Title/i))
+            .toBeInTheDocument();
+    })
+})
