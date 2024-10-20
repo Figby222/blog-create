@@ -7,4 +7,8 @@ describe("CreateBlogPostForm existence", () => {
     it("Exists", () => {
         expect(CreateBlogPostForm).toBeDefined();
     })
+
+    it("Is a function", () => {
+        expect(CreateBlogPostForm).toBeTypeOf("function");
+    })
 })
