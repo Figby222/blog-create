@@ -83,4 +83,21 @@ describe("Submitting the form", () => {
 
         expect(mockCreateBlogPost).toHaveBeenCalled();
     })
+
+    it("Only calls createBlogPost on submit", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Text Title");
+        await user.type(textInput, "Test Text");
+
+        expect(mockCreateBlogPost)
+            .not.toHaveBeenCalled();
+    })
 })
