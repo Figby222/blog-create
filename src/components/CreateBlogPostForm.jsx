@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 import BlogForm from "./BlogForm.jsx";
+import { useState } from "react";
 
 
 const CreateBlogPostForm = ({ createBlogPost }) => {
+    const [ errors, setErrors ] = useState([]);
+
+    const onSubmit = async (title, text) => {
+        const response = await createBlogPost(title, text);
+
+        response.errors && setErrors([ { field: "title", message: "Test Title Error" } ])
+    }
     return (
         <>
-            <BlogForm onSubmit={(title, text) => createBlogPost(title, text)} initialTitle={""} initialText={""} errors={[ { field: "title", message: "Test Title Error" }]} />
+            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={""} initialText={""} errors={errors} />
         </>
     )
 };
