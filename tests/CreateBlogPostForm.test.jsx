@@ -181,4 +181,30 @@ describe("Errors", () => {
         expect(screen.queryByText(/Test Title Error/i))
             .not.toBeInTheDocument();
     })
+
+    it("Renders a different error", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({
+            errors: [
+                { field: "title", message: "Test Different Title Error" }
+            ]
+        }));
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Invalid Title");
+        await user.type(textInput, "Test Invalid Text");
+        
+        await user.click(submitButton);
+
+        expect(screen.queryByText(/Test Title Error/i))
+            .not.toBeInTheDocument()
+        expect(screen.queryByText(/Test Different Title Error/i))
+            .toBeInTheDocument();
+    })
 })
