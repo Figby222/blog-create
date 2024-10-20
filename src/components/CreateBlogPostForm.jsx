@@ -7,6 +7,7 @@ const CreateBlogPostForm = ({ createBlogPost }) => {
                 Title
                 <input type="text" name="title" id="title" />
             </label>
+            <p className="text">Text</p>
         </>
     )
 };
