@@ -2,9 +2,11 @@ import PropTypes from "prop-types";
 import TextBox from "./TextBox.jsx";
 import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
-    const { error, loading, data} = useAllData();
+    const { postId } = useParams();
+    const { error, loading, data} = useAllData(postId);
 
     if (loading) {
         return <h1 className="loading">Loading</h1>
