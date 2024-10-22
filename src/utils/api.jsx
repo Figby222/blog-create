@@ -60,5 +60,27 @@ const updateBlogPut = async (title, text) => {
     }
 }
 
+const createBlogPost = async (title, text) => {
+    try {
+        const response = await fetch(`${apiLink}/posts`, {
+            mode: "cors",
+            body: JSON.stringify({ title: title, text: text }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+            method: "POST"
+        });
+    
+        const data = await response.json();
+        console.log(data);
+        return { data }
+    } catch(err) {
+        return { errors: [
+            err
+        ]}
+    }
+}
 
-export { useBlogPostData, updateBlogPut }
+
+export { useBlogPostData, updateBlogPut, createBlogPost }
