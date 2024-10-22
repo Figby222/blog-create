@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const apiLink = "http://localhost:6464/api/v1";
+
 const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzI5NTkxNTIzLCJleHAiOjE3Mjk2Nzc5MjN9.SSeHbNddkOuL3u_3Q5KlYFBLx0CvqoiDztKqjZtok6I"
 
 const useBlogPostData = (postId) => {
@@ -35,4 +36,29 @@ const useBlogPostData = (postId) => {
     return { error: error, loading: loading, data: data }
 }
 
-export { useBlogPostData }
+const updateBlogPut = async (title, text) => {
+    try {
+        const response = await fetch(`${apiLink}/posts/${4}`, {
+            mode: "cors",
+            body: JSON.stringify({ title: title, text: text }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+            method: "PUT"
+        });
+    
+        const data = await response.json();
+
+        console.log(data);
+
+        return { data }
+    } catch(err) {
+        return { errors: [
+            err
+        ]}
+    }
+}
+
+
+export { useBlogPostData, updateBlogPut }
