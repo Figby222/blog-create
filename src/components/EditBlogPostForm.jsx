@@ -7,7 +7,8 @@ import { useParams } from "react-router-dom";
 const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
-
+    const [ errors, setErrors ] = useState([]);
+    
     if (loading) {
         return <h1 className="loading">Loading</h1>
     }
@@ -15,8 +16,6 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
     if (error) {
         return <h1 className="error">An error has occurred</h1>
     }
-
-    const [ errors, setErrors ] = useState([]);
 
     const onSubmit = async (title, text) => {
         const response = await updateBlogPut(title, text);
