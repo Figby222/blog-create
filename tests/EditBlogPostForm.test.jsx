@@ -338,7 +338,19 @@ describe("Submission", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />);
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
 
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
@@ -347,7 +359,7 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken");
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testToken");
     })
 
     it("Calls updateBlogPost with different initial values", async () => {
@@ -358,7 +370,19 @@ describe("Submission", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />);
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
 
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
@@ -367,7 +391,7 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("Test Different Title", "Test Different Text", "Bearer testToken");
+            .toHaveBeenCalledWith("4", "Test Different Title", "Test Different Text", "Bearer testToken");
     })
 
     it("Calls updateBlogPost with typed in values", async () => {
@@ -378,7 +402,19 @@ describe("Submission", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />);
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -391,7 +427,7 @@ describe("Submission", () => {
 
         await user.click(submitButton);
 
-        expect(mockUpdateBlogPut).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text", "Bearer testToken");
+        expect(mockUpdateBlogPut).toHaveBeenCalledWith("4", "Test Typed In Title", "Test Typed In Text", "Bearer testToken");
     })
 })
 
@@ -552,7 +588,7 @@ describe("Using bearer token", () => {
         await user.click(submitButton);
 
         expect(updateBlogPut)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testToken")
     })
 
     it("Calls updateBlogPut with different token", async () => {
@@ -594,6 +630,6 @@ describe("Using bearer token", () => {
         expect(mockUpdateBlogPut)
             .not.toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testDifferentToken");
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testDifferentToken");
     })
 })
