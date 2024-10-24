@@ -6,6 +6,8 @@ import { useState } from "react";
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
 
+    getBearerToken();
+
     const onSubmit = async (title, text) => {
         const response = await createBlogPost(title, text);
 
