@@ -8,6 +8,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken }) => {
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
+
+    getBearerToken();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
