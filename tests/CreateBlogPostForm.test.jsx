@@ -289,4 +289,39 @@ describe("Using bearer token", () => {
         expect(mockCreateBlogPost)
             .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
     })
+
+    it("Calls createBlogPost with different token", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        const mockGetBearerToken = vi.fn(() => "Bearer testDifferentToken");
+        
+        const routes = [
+            {
+                path: "/posts/create",
+                element: <CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />
+            }
+        ]
+
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/create" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(mockCreateBlogPost)
+            .not.toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+        expect(mockCreateBlogPost)
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testDifferentToken");
+    })
 })
