@@ -118,7 +118,7 @@ describe("Submitting the form", () => {
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Title", "Test Text");
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken");
     })
 
     it("Calls createBlogPost with different values", async () => {
@@ -137,7 +137,7 @@ describe("Submitting the form", () => {
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Different Title", "Test Different Text");
+            .toHaveBeenCalledWith("Test Different Title", "Test Different Text", "Bearer testToken");
     })
 })
 
