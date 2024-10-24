@@ -16,14 +16,14 @@ describe("CreateBlogPostForm existence", () => {
 
 describe("Title", () => {
     it("Exists", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText("Title"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByLabelText(/Title/i))
             .toBeInTheDocument();
@@ -32,14 +32,14 @@ describe("Title", () => {
 
 describe("Text", () => {
     it("Exists", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText("Text"))
             .toBeInTheDocument();
     })
 
     it("Is has an input", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByLabelText(/Text/i))
             .toBeInTheDocument();
@@ -48,7 +48,7 @@ describe("Text", () => {
 
 describe("Submit button", () => {
     it("Exists", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         const submitButton = screen.queryByRole("button");
         
@@ -57,7 +57,7 @@ describe("Submit button", () => {
     })
 
     it("Has submit text", () => {
-        render(<CreateBlogPostForm createBlogPost={() => ({})} />);
+        render(<CreateBlogPostForm createBlogPost={() => ({})} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("button").textContent)
             .toMatch(/Submit/i);
@@ -68,7 +68,7 @@ describe("Submitting the form", () => {
     it("Calls createBlogPost on submit", async () => {
         const mockCreateBlogPost = vi.fn(() => ({}));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -87,7 +87,7 @@ describe("Submitting the form", () => {
     it("Only calls createBlogPost on submit", async () => {
         const mockCreateBlogPost = vi.fn(() => ({}));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -103,7 +103,7 @@ describe("Submitting the form", () => {
 
     it("Calls createBlogPost with field values", async () => {
         const mockCreateBlogPost = vi.fn(() => ({}));
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -122,7 +122,7 @@ describe("Submitting the form", () => {
 
     it("Calls createBlogPost with different values", async () => {
         const mockCreateBlogPost = vi.fn(() => ({}));
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -148,7 +148,7 @@ describe("Errors", () => {
             ]
         }));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -165,7 +165,7 @@ describe("Errors", () => {
     it("Only renders error on error", async () => {
         const mockCreateBlogPost = vi.fn(() => ({}));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -189,7 +189,7 @@ describe("Errors", () => {
             ]
         }));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -216,7 +216,7 @@ describe("Errors", () => {
             ]
         }));
 
-        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} />);
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={() => "Bearer testToken"} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);

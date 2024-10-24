@@ -3,7 +3,7 @@ import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 
 
-const CreateBlogPostForm = ({ createBlogPost }) => {
+const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
 
     const onSubmit = async (title, text) => {
@@ -20,7 +20,8 @@ const CreateBlogPostForm = ({ createBlogPost }) => {
 
 
 CreateBlogPostForm.propTypes = {
-    createBlogPost: PropTypes.func.isRequired
+    createBlogPost: PropTypes.func.isRequired,
+    getBearerToken: PropTypes.func.isRequired,
 };
 
 
