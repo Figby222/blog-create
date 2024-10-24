@@ -8,8 +8,6 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken }) => {
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
-
-    getBearerToken();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
@@ -20,7 +18,9 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken }) => {
     }
 
     const onSubmit = async (title, text) => {
-        const response = await updateBlogPut(title, text, "Bearer testToken");
+        const bearerToken = getBearerToken();
+
+        const response = await updateBlogPut(title, text, bearerToken);
 
         response.errors && setErrors(response.errors);
     }
