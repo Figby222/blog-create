@@ -347,7 +347,7 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("Test Title", "Test Text");
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken");
     })
 
     it("Calls updateBlogPost with different initial values", async () => {
@@ -367,7 +367,7 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("Test Different Title", "Test Different Text");
+            .toHaveBeenCalledWith("Test Different Title", "Test Different Text", "Bearer testToken");
     })
 
     it("Calls updateBlogPost with typed in values", async () => {
@@ -391,7 +391,7 @@ describe("Submission", () => {
 
         await user.click(submitButton);
 
-        expect(mockUpdateBlogPut).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text");
+        expect(mockUpdateBlogPut).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text", "Bearer testToken");
     })
 })
 
