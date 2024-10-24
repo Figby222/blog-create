@@ -487,3 +487,31 @@ describe("Submission Errors", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("Using bearer token", () => {
+    it("Calls getBearerToken on submit", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        })
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Invalid Title");
+        await user.type(textInput, "Test Invalid Text");
+
+        await user.click(submitButton);
+
+        expect(mockGetBearerToken).toHaveBeenCalled();
+    })
+})
