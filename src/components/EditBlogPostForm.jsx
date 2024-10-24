@@ -20,7 +20,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken }) => {
     }
 
     const onSubmit = async (title, text) => {
-        const response = await updateBlogPut(title, text);
+        const response = await updateBlogPut(title, text, "Bearer testToken");
 
         response.errors && setErrors(response.errors);
     }
