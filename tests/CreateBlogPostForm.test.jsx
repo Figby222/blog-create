@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import { screen } from "@testing-library/react";
+import { render as _render, screen } from "@testing-library/react";
 import { render } from "../lib/testing-utils.jsx";
 import CreateBlogPostForm from "../src/components/CreateBlogPostForm.jsx";
 import userEvent from "@testing-library/user-event";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("CreateBlogPostForm existence", () => {
     it("Exists", () => {
@@ -256,5 +257,36 @@ describe("Using bearer token", () => {
 
         expect(mockGetBearerToken)
             .toHaveBeenCalled();
+    })
+
+    it("Calls createBlogPost with bearer token", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+        const routes = [
+            {
+                path: "/posts/create",
+                element: <CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />
+            }
+        ]
+
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/create" ]
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(mockCreateBlogPost)
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
     })
 })
