@@ -9,4 +9,4 @@ const getBearerToken = () => {
     return localStorage.getItem("bearerToken");
 }
 
-export { storeBearerToken };
+export { storeBearerToken, getBearerToken };
