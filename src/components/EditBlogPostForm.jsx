@@ -4,7 +4,7 @@ import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
+const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken }) => {
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
@@ -31,7 +31,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut }) => {
 };
 EditBlogPostForm.propTypes = {
     useAllData: PropTypes.func.isRequired,
-    updateBlogPut: PropTypes.func.isRequired
+    updateBlogPut: PropTypes.func.isRequired,
+    getBearerToken: PropTypes.func.isRequired,
 };
 
 export default EditBlogPostForm;
