@@ -554,4 +554,46 @@ describe("Using bearer token", () => {
         expect(updateBlogPut)
             .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
     })
+
+    it("Calls updateBlogPut with different token", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testDifferentToken");
+        
+        
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(mockUpdateBlogPut)
+            .not.toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+        expect(mockUpdateBlogPut)
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testDifferentToken");
+    })
 })
