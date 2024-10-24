@@ -1,8 +1,9 @@
-import { describe, it, expect } from "vitest";
-import { screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { render as _render, screen } from "@testing-library/react";
 import { render, getUseAllDataMock } from "../lib/testing-utils.jsx";
 import EditBlogPostForm from "../src/components/EditBlogPostForm.jsx";
 import userEvent from "@testing-library/user-event";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("EditBlogPostForm existence", () => {
     it("Exists", () => {
@@ -513,5 +514,44 @@ describe("Using bearer token", () => {
         await user.click(submitButton);
 
         expect(mockGetBearerToken).toHaveBeenCalled();
+    })
+
+    it("Calls updateBlogPut with bearer token", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const updateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={updateBlogPut} getBearerToken={mockGetBearerToken} />
+            }
+        ]
+
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const titleInput = screen.queryByLabelText(/Title/i);
+        const textInput = screen.queryByLabelText(/Text/i);
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+        const user = userEvent.setup();
+
+        await user.type(titleInput, "Test Title");
+        await user.type(textInput, "Test Text");
+
+        await user.click(submitButton);
+
+        expect(updateBlogPut)
+            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
     })
 })
