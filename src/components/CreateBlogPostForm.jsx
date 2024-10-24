@@ -9,7 +9,7 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     getBearerToken();
 
     const onSubmit = async (title, text) => {
-        const response = await createBlogPost(title, text);
+        const response = await createBlogPost(title, text, "Bearer testToken");
 
         response.errors && setErrors(response.errors);
     }
