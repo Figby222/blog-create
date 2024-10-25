@@ -12,7 +12,7 @@ const useBlogPostData = (postId) => {
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${authToken}`
+                // "Authorization": `Bearer ${authToken}`
             },
             method: "GET"
         })
