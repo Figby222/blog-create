@@ -36,9 +36,9 @@ const useBlogPostData = (postId) => {
     return { error: error, loading: loading, data: data }
 }
 
-const updateBlogPut = async (title, text) => {
+const updateBlogPut = async (postId, title, text) => {
     try {
-        const response = await fetch(`${apiLink}/posts/${4}`, {
+        const response = await fetch(`${apiLink}/posts/${postId}`, {
             mode: "cors",
             body: JSON.stringify({ title: title, text: text }),
             headers: {
