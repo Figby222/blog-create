@@ -341,4 +341,21 @@ describe("Publish button", () => {
         expect(publishButton.checked)
             .toBe(true);
     })
+
+    it("Has different user selected value", async () => {
+        const onSubmit = vi.fn(() => {});
+
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={[]} />);
+
+        const publishButton = screen.queryByLabelText(/Publish/i);
+
+        const user = userEvent.setup();
+
+        await user.click(publishButton);
+
+        await user.click(publishButton);
+
+        expect(publishButton.checked)
+            .toBe(false);
+    })
 })
