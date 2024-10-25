@@ -29,7 +29,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     return (
         <>
             <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
-            <Form submitListener={() => deletePost()} submitButtonText={"Delete"}>       
+            <Form submitListener={() => deletePost(4, "Bearer testToken")} submitButtonText={"Delete"}>       
             </Form>
         </>
     )
