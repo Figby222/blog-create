@@ -317,4 +317,13 @@ describe("Publish button", () => {
         expect(screen.queryByLabelText(/Publish/i).checked)
             .toBe(true);
     })
+
+    it("Has different initial value", () => {
+        const onSubmit = vi.fn(() => {});
+
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={[]} />);
+
+        expect(screen.queryByLabelText(/Publish/i).checked)
+            .toBe(false);
+    })
 })

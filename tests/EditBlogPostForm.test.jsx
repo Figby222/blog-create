@@ -907,4 +907,23 @@ describe("Publish button", () => {
         expect(screen.queryByLabelText(/Publish/i).checked)
             .toBe(true);
     })
+
+    it("Has different initial value", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: false
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+
+        expect(screen.queryByLabelText(/Publish/i).checked)
+            .toBe(false);
+    })
 })
