@@ -9,6 +9,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
+
+    deletePost();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
