@@ -665,4 +665,40 @@ describe("Delete button", () => {
 
         
     })
+
+    it("Calls deletePost on delete", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/4/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+
+        const user = userEvent.setup();
+
+        await user.click(deleteButton);
+
+        expect(mockDeletePost)
+            .toHaveBeenCalled();
+    })
 })
