@@ -19,6 +19,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
+                <p className="publish">Publish</p>
                 <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
             </Form>
         </>
