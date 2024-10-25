@@ -145,7 +145,7 @@ describe("Errors", () => {
     it("Renders error on error", async () => {
         const mockCreateBlogPost = vi.fn(() => ({
             errors: [
-                { path: "title", message: "Test Title Error" }
+                { path: "title", msg: "Test Title Error" }
             ]
         }));
 
@@ -186,7 +186,7 @@ describe("Errors", () => {
     it("Renders a different error", async () => {
         const mockCreateBlogPost = vi.fn(() => ({
             errors: [
-                { path: "title", message: "Test Different Title Error" }
+                { path: "title", msg: "Test Different Title Error" }
             ]
         }));
 
@@ -212,8 +212,8 @@ describe("Errors", () => {
     it("Can render multiple errors", async () => {
         const mockCreateBlogPost = vi.fn(() => ({
             errors: [
-                { path: "title", message: "Test Title Error" },
-                { path: "title", message: "Test Different Title Error" }
+                { path: "title", msg: "Test Title Error" },
+                { path: "title", msg: "Test Different Title Error" }
             ]
         }));
 
