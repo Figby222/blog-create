@@ -299,4 +299,13 @@ describe("Publish button", () => {
         expect(screen.queryByText(/Publish/i))
             .toBeInTheDocument();
     })
+
+    it("Is has an input", () => {
+        const onSubmit = vi.fn(() => {});
+
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={[]} />);
+
+        expect(screen.queryByLabelText(/Publish/i))
+            .toBeInTheDocument();
+    })
 })

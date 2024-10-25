@@ -336,4 +336,14 @@ describe("Publish button", () => {
         expect(screen.queryByText(/Publish/i))
             .toBeInTheDocument();
     })
+
+    it("Is has an input", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByLabelText(/Publish/i))
+            .toBeInTheDocument();
+    })
 })
