@@ -50,7 +50,7 @@ const updateBlogPut = async (postId, title, text, bearerToken) => {
 
         console.log(data);
 
-        return { data }
+        return { data, errors: data.errors }
     } catch(err) {
         return { errors: [
             err
@@ -74,7 +74,7 @@ const createBlogPost = async (title, text, bearerToken) => {
     
         const data = await response.json();
         console.log(data);
-        return { data }
+        return { data, errors: data.errors }
     } catch(err) {
         return { errors: [
             err
