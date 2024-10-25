@@ -273,7 +273,7 @@ describe("Submit button", () => {
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
 
-        expect(screen.queryByRole("button"))
+        expect(screen.queryByRole("button", { name: /Submit/i }))
             .toBeInTheDocument();
     })
 
@@ -285,7 +285,7 @@ describe("Submit button", () => {
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
 
-        expect(screen.queryByRole("button").textContent)
+        expect(screen.queryByRole("button", { name: /Submit/i }).textContent)
             .toMatch(/Submit/i);
     })
 })
