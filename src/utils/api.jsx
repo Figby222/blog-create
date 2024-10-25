@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 
 const apiLink = "http://localhost:6464/api/v1";
 
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzI5NzU5NDMxLCJleHAiOjE3Mjk4NDU4MzF9.487XCpTQCkYAHGrCJtFDg1tIm6sfJh9Q2l5ZJtJVQgM"
-
 const useBlogPostData = (postId) => {
     const [ error, setError ] = useState(false);
     const [ loading, setLoading ] = useState(true);
@@ -60,14 +58,16 @@ const updateBlogPut = async (postId, title, text, bearerToken) => {
     }
 }
 
-const createBlogPost = async (title, text) => {
+
+
+const createBlogPost = async (title, text, bearerToken) => {
     try {
         const response = await fetch(`${apiLink}/posts`, {
             mode: "cors",
             body: JSON.stringify({ title: title, text: text }),
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${authToken}`
+                "Authorization": bearerToken
             },
             method: "POST"
         });
