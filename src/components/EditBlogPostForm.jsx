@@ -26,10 +26,16 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         response.errors && setErrors(response.errors);
     }
 
+    const onDelete = async () => {
+        const bearerToken = getBearerToken();
+
+        const response = await deletePost(postId, bearerToken);
+    }
+
     return (
         <>
             <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
-            <Form submitListener={() => deletePost(4, "Bearer testToken")} submitButtonText={"Delete"}>       
+            <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
         </>
     )
