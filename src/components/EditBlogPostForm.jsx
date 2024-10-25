@@ -3,6 +3,7 @@ import TextBox from "./TextBox.jsx";
 import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Form from "./Form.jsx";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost }) => {
     const { postId } = useParams();
@@ -28,6 +29,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     return (
         <>
             <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
+            <Form submitListener={() => {}} submitButtonText={"Delete"}>       
+            </Form>
         </>
     )
 };
