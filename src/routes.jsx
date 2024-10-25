@@ -1,9 +1,8 @@
 import App from './App';
 import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
-import { useBlogPostData, updateBlogPut, createBlogPost } from "./utils/api.jsx";
+import { useBlogPostData, updateBlogPut, createBlogPost, deletePost } from "./utils/api.jsx";
 import { getBearerToken } from "./utils/storage.jsx"
-
 
 const routes = [
     {
@@ -12,7 +11,7 @@ const routes = [
     },
     {
         path: "/posts/:postId/edit",
-        element: <EditBlogPostForm  useAllData={useBlogPostData} updateBlogPut={updateBlogPut} getBearerToken={getBearerToken} />
+        element: <EditBlogPostForm  useAllData={useBlogPostData} updateBlogPut={updateBlogPut} getBearerToken={getBearerToken} deletePost={deletePost} />
     },
     {
         path: "/posts/create",
