@@ -807,4 +807,44 @@ describe("Delete button", () => {
         expect(mockDeletePost)
             .toHaveBeenCalledWith("5", "Bearer testToken");
     })
+
+    it("Calls deletePost with different token", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: ""
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testDifferentToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+
+        const user = userEvent.setup();
+
+        await user.click(deleteButton);
+
+        expect(mockDeletePost)
+            .not.toHaveBeenCalledWith("5", "Bearer testToken");
+        expect(mockDeletePost)
+            .toHaveBeenCalledWith("5", "Bearer testDifferentToken");
+
+
+    })
 })
