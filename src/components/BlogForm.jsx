@@ -7,6 +7,7 @@ import Errors from "./Errors.jsx";
 const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus, errors }) => {
     const [ title, setTitle ] = useState(initialTitle);
     const [ text, setText ] = useState(initialText);
+    const [ publishInputChecked, setPublishInputChecked ] = useState(initialPublishedStatus);
 
     return (
         <>
@@ -21,7 +22,10 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
                 </label>
                 <label className="publish-status" htmlFor="publish-status">
                     Publish
-                    <input type="checkbox" name="publish_status" id="publish-status" checked={initialPublishedStatus} />
+                    <input type="checkbox" name="publish_status" id="publish-status"
+                        checked={publishInputChecked}
+                        onChange={(e) => setPublishInputChecked(true)}
+                    />
                 </label>
                 <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
             </Form>
