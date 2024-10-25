@@ -9,8 +9,6 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
-
-    deletePost();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
@@ -31,7 +29,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     return (
         <>
             <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
-            <Form submitListener={() => {}} submitButtonText={"Delete"}>       
+            <Form submitListener={() => deletePost()} submitButtonText={"Delete"}>       
             </Form>
         </>
     )
