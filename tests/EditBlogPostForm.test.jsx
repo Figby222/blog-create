@@ -926,4 +926,29 @@ describe("Publish button", () => {
         expect(screen.queryByLabelText(/Publish/i).checked)
             .toBe(false);
     })
+
+    it("Has user selected value", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: false
+        })
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateblogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+
+        const publishButton = screen.queryByLabelText(/Publish/i);
+
+        const user = userEvent.setup();
+
+        await user.click(publishButton);
+
+        expect(publishButton.checked)
+            .toBe(true);
+    })
 })

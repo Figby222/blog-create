@@ -346,4 +346,20 @@ describe("Publish button", () => {
         expect(screen.queryByLabelText(/Publish/i))
             .toBeInTheDocument();
     })
+
+    it("Has user selected value", async () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        const publishButton = screen.queryByLabelText(/Publish/i);
+
+        const user = userEvent.setup();
+
+        await user.click(publishButton);
+
+        expect(publishButton.checked)
+            .toBe(true);
+    })
 })
