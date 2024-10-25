@@ -24,7 +24,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
                     Publish
                     <input type="checkbox" name="publish_status" id="publish-status"
                         checked={publishInputChecked}
-                        onChange={(e) => setPublishInputChecked(true)}
+                        onChange={(e) => setPublishInputChecked(e.target.checked)}
                     />
                 </label>
                 <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
