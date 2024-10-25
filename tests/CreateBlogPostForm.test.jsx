@@ -325,3 +325,15 @@ describe("Using bearer token", () => {
             .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testDifferentToken");
     })
 })
+
+describe("Publish button", () => {
+    it("Exists", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByText(/Publish/i))
+            .toBeInTheDocument();
+    })
+})

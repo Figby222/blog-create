@@ -848,3 +848,25 @@ describe("Delete button", () => {
 
     })
 })
+
+describe("Publish button", () => {
+    it("Exists", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: false
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+
+        expect(screen.queryByText(/Publish/i))
+            .toBeInTheDocument();
+
+    })
+})

@@ -289,3 +289,14 @@ describe("Errors", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("Publish button", () => {
+    it("Exists", () => {
+        const onSubmit = vi.fn(() => {});
+
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={[]} />);
+
+        expect(screen.queryByText(/Publish/i))
+            .toBeInTheDocument();
+    })
+})
