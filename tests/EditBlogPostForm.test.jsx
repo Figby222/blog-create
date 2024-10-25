@@ -64,7 +64,8 @@ describe("Error", () => {
     it("Only renders error on error", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -78,7 +79,8 @@ describe("Title", () => {
     it("Exists", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         })
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -90,7 +92,8 @@ describe("Title", () => {
     it("Is has an input", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -103,7 +106,8 @@ describe("Title", () => {
     it("Has provided initial value", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -117,7 +121,8 @@ describe("Title", () => {
     it("Has different provided initial value", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
-            text: "Test Different Text"
+            text: "Test Different Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -133,7 +138,8 @@ describe("Title", () => {
     it("Has typed in value", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -151,7 +157,8 @@ describe("Title", () => {
     it("Has different typed in value", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -173,7 +180,8 @@ describe("Text", () => {
     it("Exists", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -185,7 +193,8 @@ describe("Text", () => {
     it("Is has an input", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -197,7 +206,8 @@ describe("Text", () => {
     it("Has provided initial value", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -211,7 +221,8 @@ describe("Text", () => {
     it("Has different provided initial value", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
-            text: "Test Different Text"
+            text: "Test Different Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -227,7 +238,8 @@ describe("Text", () => {
     it("Has typed in value", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -245,7 +257,8 @@ describe("Text", () => {
     it("Has different typed in value", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -268,7 +281,8 @@ describe("Submit button", () => {
     it("Exists", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -280,7 +294,8 @@ describe("Submit button", () => {
     it("Has submit text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -294,7 +309,8 @@ describe("Submission", () => {
     it("Calls updateBlogPut", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -319,7 +335,8 @@ describe("Submission", () => {
     it("Only calls updateBlogPut on submit", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -333,7 +350,8 @@ describe("Submission", () => {
     it("Calls updateBlogPut with initial values", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
-            text: "Test Text"
+            text: "Test Text",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -365,7 +383,8 @@ describe("Submission", () => {
     it("Calls updateBlogPost with different initial values", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
-            text: "Test Different Text"
+            text: "Test Different Text",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -397,7 +416,8 @@ describe("Submission", () => {
     it("Calls updateBlogPost with typed in values", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -435,7 +455,8 @@ describe("Submission Errors", () => {
     it("Renders submission error", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -464,7 +485,8 @@ describe("Submission Errors", () => {
     it("Renders different submission error", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -495,7 +517,8 @@ describe("Submission Errors", () => {
     it("Renders multiple errors", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -529,7 +552,8 @@ describe("Using bearer token", () => {
     it("Calls getBearerToken on submit", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         })
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -555,7 +579,8 @@ describe("Using bearer token", () => {
     it("Calls updateBlogPut with bearer token", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const updateBlogPut = vi.fn(() => ({}));
@@ -594,7 +619,8 @@ describe("Using bearer token", () => {
     it("Calls updateBlogPut with different token", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -638,7 +664,8 @@ describe("Delete button", () => {
     it("Exists", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         })
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -669,7 +696,8 @@ describe("Delete button", () => {
     it("Calls deletePost on delete", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -705,7 +733,8 @@ describe("Delete button", () => {
     it("Only calls deletePost on delete", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -737,7 +766,8 @@ describe("Delete button", () => {
     it("Calls deletePost with postId & token", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -773,7 +803,8 @@ describe("Delete button", () => {
     it("Calls deletePost with different postId", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -811,7 +842,8 @@ describe("Delete button", () => {
     it("Calls deletePost with different token", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
-            text: ""
+            text: "",
+            published: true
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -970,6 +1002,7 @@ describe("Publish button", () => {
         const publishButton = screen.queryByLabelText(/Publish/i);
 
         const user = userEvent.setup();
+        
 
         await user.click(publishButton)
 
