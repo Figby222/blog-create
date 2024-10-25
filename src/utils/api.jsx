@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const apiLink = "http://localhost:6464/api/v1";
 
-const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzI5NTkxNTIzLCJleHAiOjE3Mjk2Nzc5MjN9.SSeHbNddkOuL3u_3Q5KlYFBLx0CvqoiDztKqjZtok6I"
+const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzI5NzU5NDMxLCJleHAiOjE3Mjk4NDU4MzF9.487XCpTQCkYAHGrCJtFDg1tIm6sfJh9Q2l5ZJtJVQgM"
 
 const useBlogPostData = (postId) => {
     const [ error, setError ] = useState(false);
@@ -36,14 +36,14 @@ const useBlogPostData = (postId) => {
     return { error: error, loading: loading, data: data }
 }
 
-const updateBlogPut = async (postId, title, text) => {
+const updateBlogPut = async (postId, title, text, bearerToken) => {
     try {
         const response = await fetch(`${apiLink}/posts/${postId}`, {
             mode: "cors",
             body: JSON.stringify({ title: title, text: text }),
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${authToken}`
+                "Authorization": bearerToken
             },
             method: "PUT"
         });
