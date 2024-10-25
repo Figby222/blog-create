@@ -82,5 +82,29 @@ const createBlogPost = async (title, text, bearerToken) => {
     }
 }
 
+const deletePost = async (postId, bearerToken) => {
+    try {
+        const response = await fetch(`${apiLink}/posts/${postId}`, {
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": bearerToken,
+                method: "DELETE"
+            }
+        });
+    
+        const data = await response.json();
 
-export { useBlogPostData, updateBlogPut, createBlogPost }
+        console.log(data);
+
+        return { data }
+    } catch(err) {
+        return { errors: [
+            err
+        ]}
+    }
+
+}
+
+
+export { useBlogPostData, updateBlogPut, createBlogPost, deletePost }
