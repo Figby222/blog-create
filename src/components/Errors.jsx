@@ -5,8 +5,8 @@ const Errors = ({ errors }) => {
         <>
             <ul className="errors">
                 { errors.map((error) => {
-                    return <li className="error" key={error.message}>
-                        { error.message }
+                    return <li className="error" key={error.msg}>
+                        { error.msg }
                     </li>
                 })}
             </ul>
@@ -16,7 +16,7 @@ const Errors = ({ errors }) => {
 
 Errors.propTypes = {
     errors: PropTypes.arrayOf(PropTypes.shape({
-        message: PropTypes.string
+        msg: PropTypes.string
     }))
 }
 

@@ -30,7 +30,7 @@ BlogForm.propTypes = {
     initialTitle: PropTypes.string,
     initialText: PropTypes.string,
     errors: PropTypes.arrayOf(PropTypes.shape({
-        message: PropTypes.string.isRequired
+        msg: PropTypes.string.isRequired
     }))
 }
 
