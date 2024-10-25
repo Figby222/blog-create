@@ -19,7 +19,10 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
-                <p className="publish">Publish</p>
+                <label className="publish-status" htmlFor="publish-status">
+                    Publish
+                    <input type="checkbox" name="publish_status" id="publish-status" />
+                </label>
                 <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
             </Form>
         </>
