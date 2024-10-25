@@ -34,7 +34,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
 
     return (
         <>
-            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} errors={errors} />
+            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
         </>
