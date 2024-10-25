@@ -16,7 +16,7 @@ const routes = [
     },
     {
         path: "/posts/create",
-        element: <CreateBlogPostForm createBlogPost={createBlogPost} />
+        element: <CreateBlogPostForm createBlogPost={createBlogPost} getBearerToken={getBearerToken} />
     }
 ];
 
