@@ -440,7 +440,7 @@ describe("Submission Errors", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({
             errors: [
-                { field: "title", message: "Test Title Error"}
+                { path: "title", message: "Test Title Error"}
             ]
         }));
 
@@ -469,7 +469,7 @@ describe("Submission Errors", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({
             errors: [
-                { field: "Title", message: "Test Different Title Error" }
+                { path: "Title", message: "Test Different Title Error" }
             ]
         }));
 
@@ -500,8 +500,8 @@ describe("Submission Errors", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({
             errors: [
-                { field: "title", message: "Test Title Error" },
-                { field: "title", message: "Test Different Title Error" }
+                { path: "title", message: "Test Title Error" },
+                { path: "title", message: "Test Different Title Error" }
             ]
         }));
 

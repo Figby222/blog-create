@@ -15,14 +15,14 @@ describe("Errors existence", () => {
 
 describe("Errors list", () => {
     it("Renders an error message", () => {
-        render(<Errors errors={[ { field: "Test Field", message: "Test Error Message"}]} />);
+        render(<Errors errors={[ { path: "Test Field", message: "Test Error Message"}]} />);
 
         expect(screen.queryByText(/Test Error Message/i))
             .toBeInTheDocument();
     })
     
     it("Renders a different error message", () => {
-        render(<Errors errors= {[ { field: "Test Field", message: "Test Different Error Message" }]} />);
+        render(<Errors errors= {[ { path: "Test Field", message: "Test Different Error Message" }]} />);
 
         expect(screen.queryByText(/Test Error Message/i))
             .not.toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("Errors list", () => {
     })
 
     it("Renders multiple error messages", () => {
-        render(<Errors errors={[ { field: "Test Field", message: "Test Error Message" }, { field: "Test Field", message: "Test Different Error Message" }]} />);
+        render(<Errors errors={[ { path: "Test Field", message: "Test Error Message" }, { path: "Test Field", message: "Test Different Error Message" }]} />);
 
         expect(screen.queryByText(/Test Error Message/i))
             .toBeInTheDocument();

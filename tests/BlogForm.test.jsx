@@ -253,7 +253,7 @@ describe("Submitting the form", () => {
 describe("Errors", () => {
     it("Sets provided error", () => {
         const errors = [
-            { field: "title", message: "Test Title Error" }
+            { path: "title", message: "Test Title Error" }
         ]
 
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
@@ -264,7 +264,7 @@ describe("Errors", () => {
 
     it("Sets different provided error", () => {
         const errors = [
-            { field: "title", message: "Test Different Title Error" }
+            { path: "title", message: "Test Different Title Error" }
         ]
 
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
@@ -277,8 +277,8 @@ describe("Errors", () => {
 
     it("Can set multiple errors", () => {
         const errors = [
-            { field: "title", message: "Test Title Error" },
-            { field: "title", message: "Test Different Title Error" }
+            { path: "title", message: "Test Title Error" },
+            { path: "title", message: "Test Different Title Error" }
         ]
 
         render(<BlogForm onSubmit={() => {}} initialTitle={""} initialText={""} errors={errors} />);
