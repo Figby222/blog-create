@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "./Form.jsx";
 import Errors from "./Errors.jsx";
 
-const BlogForm = ({ onSubmit, initialTitle, initialText, errors }) => {
+const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus, errors }) => {
     const [ title, setTitle ] = useState(initialTitle);
     const [ text, setText ] = useState(initialText);
 
@@ -29,6 +29,7 @@ BlogForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     initialTitle: PropTypes.string,
     initialText: PropTypes.string,
+    initialPublishedStats: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.shape({
         msg: PropTypes.string.isRequired
     }))
