@@ -186,7 +186,7 @@ describe("Submitting the form", () => {
 
     it("Calls onSubmit with provided field values", async () => {
         const onSubmit = vi.fn(() => {});
-        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} initialPublishedStatus={true} errors={[]} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={"Test Initial Title"} initialText={"Test Initial Text"} initialPublishedStatus={false} errors={[]} />);
 
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
@@ -195,7 +195,7 @@ describe("Submitting the form", () => {
         await user.click(submitButton);
 
         expect(onSubmit)
-            .toHaveBeenCalledWith("Test Initial Title", "Test Initial Text");
+            .toHaveBeenCalledWith("Test Initial Title", "Test Initial Text", false);
     })
 
     it("Calls onSubmit with different provided field values", async () => {
@@ -209,7 +209,7 @@ describe("Submitting the form", () => {
         await user.click(submitButton);
         
         expect(onSubmit)
-            .toHaveBeenCalledWith("Test Different Initial Title", "Test Different Initial Text");
+            .toHaveBeenCalledWith("Test Different Initial Title", "Test Different Initial Text", true);
     })
 
     it("Calls onSubmit with typed in field values", async () => {
@@ -218,35 +218,39 @@ describe("Submitting the form", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Typed In Title");
         await user.type(textInput, "Test Typed In Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
-        expect(onSubmit).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text");
+        expect(onSubmit).toHaveBeenCalledWith("Test Typed In Title", "Test Typed In Text", false);
     })
 
     it("Calls onSubmit with different typed in values", async () => {
         const onSubmit = vi.fn(() => {});
 
-        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={true} errors={[]} />);
+        render(<BlogForm onSubmit={onSubmit} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={[]} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
         
         await user.type(titleInput, "Test Different Typed In Title");
         await user.type(textInput, "Test Different Typed In Text");
+        await user.click(publishButton)
 
         await user.click(submitButton);
 
-        expect(onSubmit).toHaveBeenCalledWith("Test Different Typed In Title", "Test Different Typed In Text");
+        expect(onSubmit).toHaveBeenCalledWith("Test Different Typed In Title", "Test Different Typed In Text", true);
     })
 })
 

@@ -73,12 +73,14 @@ describe("Submitting the form", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
@@ -92,11 +94,13 @@ describe("Submitting the form", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Text Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         expect(mockCreateBlogPost)
             .not.toHaveBeenCalled();
@@ -108,17 +112,20 @@ describe("Submitting the form", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
+        await user.click(publishButton);
         
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken");
+            .toHaveBeenCalledWith("Test Title", "Test Text", false, "Bearer testToken");
     })
 
     it("Calls createBlogPost with different values", async () => {
@@ -127,17 +134,19 @@ describe("Submitting the form", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Different Title");
         await user.type(textInput, "Test Different Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Different Title", "Test Different Text", "Bearer testToken");
+            .toHaveBeenCalledWith("Test Different Title", "Test Different Text", true, "Bearer testToken");
     })
 })
 
@@ -246,12 +255,14 @@ describe("Using bearer token", () => {
         
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Invalid Title");
         await user.type(textInput, "Test Invalid Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
@@ -277,17 +288,19 @@ describe("Using bearer token", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+            .toHaveBeenCalledWith("Test Title", "Test Text", true, "Bearer testToken")
     })
 
     it("Calls createBlogPost with different token", async () => {
@@ -310,19 +323,21 @@ describe("Using bearer token", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
         expect(mockCreateBlogPost)
-            .not.toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+            .not.toHaveBeenCalledWith("Test Title", "Test Text", true, "Bearer testToken")
         expect(mockCreateBlogPost)
-            .toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testDifferentToken");
+            .toHaveBeenCalledWith("Test Title", "Test Text", true, "Bearer testDifferentToken");
     })
 })
 

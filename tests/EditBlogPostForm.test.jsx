@@ -310,7 +310,7 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: false
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -320,12 +320,14 @@ describe("Submission", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, " Test More Information");
         await user.type(textInput, " Test More Information");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
@@ -351,7 +353,7 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: false
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -377,7 +379,7 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testToken");
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", false, "Bearer testToken");
     })
 
     it("Calls updateBlogPost with different initial values", async () => {
@@ -410,14 +412,14 @@ describe("Submission", () => {
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("4", "Test Different Title", "Test Different Text", "Bearer testToken");
+            .toHaveBeenCalledWith("4", "Test Different Title", "Test Different Text", true, "Bearer testToken");
     })
 
     it("Calls updateBlogPost with typed in values", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: false
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -438,16 +440,18 @@ describe("Submission", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
         
         const user = userEvent.setup();
         
         await user.type(titleInput, "Test Typed In Title");
         await user.type(textInput, "Test Typed In Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
-        expect(mockUpdateBlogPut).toHaveBeenCalledWith("4", "Test Typed In Title", "Test Typed In Text", "Bearer testToken");
+        expect(mockUpdateBlogPut).toHaveBeenCalledWith("4", "Test Typed In Title", "Test Typed In Text", true, "Bearer testToken");
     })
 })
 
@@ -564,12 +568,14 @@ describe("Using bearer token", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Invalid Title");
         await user.type(textInput, "Test Invalid Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
@@ -580,7 +586,7 @@ describe("Using bearer token", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: false
         });
 
         const updateBlogPut = vi.fn(() => ({}));
@@ -603,24 +609,26 @@ describe("Using bearer token", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
         expect(updateBlogPut)
-            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testToken")
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", true, "Bearer testToken")
     })
 
     it("Calls updateBlogPut with different token", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: false
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -644,19 +652,21 @@ describe("Using bearer token", () => {
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
+        const publishButton = screen.queryByLabelText(/Publish/i);
         const submitButton = screen.queryByRole("button", { name: /Submit/i });
 
         const user = userEvent.setup();
 
         await user.type(titleInput, "Test Title");
         await user.type(textInput, "Test Text");
+        await user.click(publishButton);
 
         await user.click(submitButton);
 
         expect(mockUpdateBlogPut)
-            .not.toHaveBeenCalledWith("Test Title", "Test Text", "Bearer testToken")
+            .not.toHaveBeenCalledWith("Test Title", "Test Text", true, "Bearer testToken")
         expect(mockUpdateBlogPut)
-            .toHaveBeenCalledWith("4", "Test Title", "Test Text", "Bearer testDifferentToken");
+            .toHaveBeenCalledWith("4", "Test Title", "Test Text", true, "Bearer testDifferentToken");
     })
 })
 
@@ -1002,7 +1012,7 @@ describe("Publish button", () => {
         const publishButton = screen.queryByLabelText(/Publish/i);
 
         const user = userEvent.setup();
-        
+
 
         await user.click(publishButton)
 
