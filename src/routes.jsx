@@ -2,10 +2,8 @@ import App from './App';
 import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
 import SignUpPage from "./components/SignUpPage.jsx";
-import { useBlogPostData, updateBlogPut, createBlogPost, deletePost } from "./utils/api.jsx";
+import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount } from "./utils/api.jsx";
 import { getBearerToken } from "./utils/storage.jsx"
-
-const createAnAccount = () => ({});
 
 const routes = [
     {
