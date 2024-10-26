@@ -3,10 +3,8 @@ import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
 import SignUpPage from "./components/SignUpPage.jsx";
 import LogInPage from "./components/LogInPage.jsx";
-import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount } from "./utils/api.jsx";
+import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser } from "./utils/api.jsx";
 import { getBearerToken, storeBearerToken } from "./utils/storage.jsx"
-
-const logInUser = () => ({});
 
 const routes = [
     {
@@ -34,4 +32,6 @@ const routes = [
 
     
 ];
+
+
 export default routes;
