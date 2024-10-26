@@ -35,11 +35,11 @@ const useBlogPostData = (postId) => {
     return { error: error, loading: loading, data: data }
 }
 
-const updateBlogPut = async (postId, title, text, bearerToken) => {
+const updateBlogPut = async (postId, title, text, shouldPublish, bearerToken) => {
     try {
         const response = await fetch(`${apiLink}/posts/${postId}`, {
             mode: "cors",
-            body: JSON.stringify({ title: title, text: text }),
+            body: JSON.stringify({ title: title, text: text, published: shouldPublish }),
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": bearerToken
