@@ -6,16 +6,16 @@ import { useState } from "react";
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
 
-    const onSubmit = async (title, text) => {
+    const onSubmit = async (title, text, isPublishInputChecked) => {
         const bearerToken = getBearerToken();
 
-        const response = await createBlogPost(title, text, bearerToken);
+        const response = await createBlogPost(title, text, isPublishInputChecked, bearerToken);
 
         response.errors && setErrors(response.errors);
     }
     return (
         <>
-            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={errors} />
+            <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={errors} />
         </>
     )
 };
