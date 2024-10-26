@@ -61,11 +61,11 @@ const updateBlogPut = async (postId, title, text, shouldPublish, bearerToken) =>
 
 
 
-const createBlogPost = async (title, text, bearerToken) => {
+const createBlogPost = async (title, text, shouldPublish, bearerToken) => {
     try {
         const response = await fetch(`${apiLink}/posts`, {
             mode: "cors",
-            body: JSON.stringify({ title: title, text: text }),
+            body: JSON.stringify({ title: title, text: text, published: shouldPublish }),
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": bearerToken
