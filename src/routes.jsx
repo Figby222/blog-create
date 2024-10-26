@@ -2,8 +2,11 @@ import App from './App';
 import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
 import SignUpPage from "./components/SignUpPage.jsx";
+import LogInPage from "./components/LogInPage.jsx";
 import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount } from "./utils/api.jsx";
-import { getBearerToken } from "./utils/storage.jsx"
+import { getBearerToken, storeBearerToken } from "./utils/storage.jsx"
+
+const logInUser = () => ({});
 
 const routes = [
     {
@@ -21,6 +24,14 @@ const routes = [
     {
         path: "/sign-up",
         element: <SignUpPage createAnAccount={createAnAccount} />
+    },
+    {
+        path: "/log-in",
+        element: <LogInPage storeBearerToken={storeBearerToken} logInUser={logInUser} />
     }
+
+
+
+    
 ];
 export default routes;
