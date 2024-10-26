@@ -23,6 +23,7 @@ const useBlogPostData = (postId) => {
                 setData({
                     title: response.title,
                     text: response.text,
+                    published: response.published
                 })
             })
             .catch((err) => setError(err))
