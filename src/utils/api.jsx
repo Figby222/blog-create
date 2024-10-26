@@ -130,5 +130,43 @@ const createAnAccount = async (username, email, password, confirmPassword) => {
     }
 }
 
+const logInUser = async (username, email, password) => {
+    try {
+        const response = await fetch(`${apiLink}/users/log-in`, {
+            mode: "cors",
+            body: JSON.stringify({ username: username, email: email, password: password }),
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST"
+        });
 
-export { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount }
+        
+        console.log(response.headers.get("Authorization"));
+        
+        const data = await response.json()
+        
+        console.log(data);
+        if (response.status >= 400) {
+            return { errors: [
+                {
+                    path: "all",
+                    msg: data.message
+                }
+            ]}
+        }
+        
+        const authToken = response.headers.get("Authorization");
+        
+        return { token: authToken, message: data.message, errors: data.errors }
+    } catch(err) {
+        return { errors: [
+            err
+        ]};
+    }
+
+
+}
+
+
+export { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser }
