@@ -18,10 +18,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         return <h1 className="error">An error has occurred</h1>
     }
 
-    const onSubmit = async (title, text) => {
+    const onSubmit = async (title, text, isPublishInputChecked) => {
         const bearerToken = getBearerToken();
 
-        const response = await updateBlogPut(postId, title, text, bearerToken);
+        const response = await updateBlogPut(postId, title, text, isPublishInputChecked, bearerToken);
 
         response.errors && setErrors(response.errors);
     }
@@ -34,7 +34,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
 
     return (
         <>
-            <BlogForm onSubmit={(title, text) => onSubmit(title, text)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
+            <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
         </>
