@@ -84,7 +84,7 @@ describe("TextBox textarea", () => {
         expect(onChange).toHaveBeenCalled();
     })
 
-    it.skip("Calls onChange with value", async () => {
+    it("Calls onChange with value", async () => {
         const onChange = vi.fn(() => {});
         render(<TextBox label={""} placeholder={""} value={""} onChange={onChange} />);
 
@@ -92,12 +92,12 @@ describe("TextBox textarea", () => {
 
         const textbox = screen.queryByRole("textbox");
 
-        await user.type(textbox, "Test Text");
+        await user.type(textbox, "T");
 
-        expect(onChange).toHaveBeenCalledWith("Test Text");
+        expect(onChange).toHaveBeenCalledWith("T");
     })
 
-    it.skip("Calls onChange with a different value", async () => {
+    it("Calls onChange with a different value", async () => {
         const onChange = vi.fn(() => {});
         render(<TextBox label={""} placeholder={""} value={""} onChange={onChange} />);
 
@@ -105,9 +105,9 @@ describe("TextBox textarea", () => {
 
         const textbox = screen.queryByRole("textbox");
 
-        await user.type(textbox, "Different Text");
+        await user.type(textbox, "S");
 
-        expect(onChange).not.toHaveBeenCalledWith("Test Text");
-        expect(onChange).toHaveBeenCalledWith("Different Text");
+        expect(onChange).not.toHaveBeenCalledWith("T");
+        expect(onChange).toHaveBeenCalledWith("S");
     })
 })
