@@ -200,6 +200,19 @@ describe("links", () => {
         expect(screen.queryByRole("link", { name: /Log In/i }))
             .toBeInTheDocument();
     })
+
+    it("Renders a Create link", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: []
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByRole("link", { name: /Create/i }))
+            .toBeInTheDocument();
+    })
 })
 
 describe("Title", () => {
