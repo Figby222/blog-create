@@ -35,6 +35,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
 
     return (
         <>
+            <h1 className="main-heading"></h1>
             <Link>Create</Link>
             <Link>Sign Up</Link>
             <Link>Log In</Link>
