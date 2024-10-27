@@ -458,4 +458,15 @@ describe("title", () => {
 
         expect(headings.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Has the correct text", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByRole("heading", { name: /Figby/i }))
+            .toBeInTheDocument();
+    })
 })
