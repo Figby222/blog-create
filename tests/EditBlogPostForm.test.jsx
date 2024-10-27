@@ -1312,4 +1312,56 @@ describe("Comments", () => {
         
 
     })
+
+    it("Renders a different comment", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+            comments: [
+                {
+                    id: 1,
+                    creatorId: 1,
+                    creator: "TestDifferentCreator",
+                    text: "TestDifferentText",
+                }
+            ]
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const mockDeleteComment = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={mockDeleteComment} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        expect(screen.queryByText(/TestCreator/i))
+            .not.toBeInTheDocument();
+        expect(screen.queryByText(/TestText/i))
+            .not.toBeInTheDocument();
+
+        expect(screen.queryByText(/TestDifferentCreator/i))
+            .toBeInTheDocument();
+        expect(screen.queryByText(/TestDifferentText/i))
+            .toBeInTheDocument();
+        expect(screen.queryByRole("button", { name: /Delete Comment/i }))
+            .toBeInTheDocument();
+
+
+    })
 })
