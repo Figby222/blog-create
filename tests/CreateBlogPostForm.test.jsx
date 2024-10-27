@@ -433,4 +433,15 @@ describe("Links", () => {
         expect(screen.queryByRole("link", { name: /Sign Up/i }))
             .toBeInTheDocument();
     })
+
+    it("Renders a Log In link", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByRole("link", { name: /Log In/i }))
+            .toBeInTheDocument();
+    })
 })
