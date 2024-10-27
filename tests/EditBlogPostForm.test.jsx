@@ -1565,4 +1565,60 @@ describe("Comments", () => {
             .toHaveBeenCalledWith(1, "Bearer testToken");
 
     })
+
+    it("Calls deleteComment with different args", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+            comments: [
+                {
+                    id: 2,
+                    creatorId: 2,
+                    creator: "TestDifferentCreator",
+                    text: "TestDifferentText"
+                }
+            ],
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testDifferentToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const mockDeleteComment = vi.fn(() => ({}));
+
+
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={mockDeleteComment} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+
+
+        _render(<RouterProvider router={router} />);
+
+
+
+        const deleteCommentButton = screen.queryByRole("button", { name: /Delete Comment/i });
+
+        const user = userEvent.setup();
+
+        await user.click(deleteCommentButton);
+
+
+        expect(mockDeleteComment)
+            .not.toHaveBeenCalledWith(1, "Bearer testToken");
+        expect(mockDeleteComment)
+            .toHaveBeenCalledWith(2, "Bearer testDifferentToken");
+    })
 })
