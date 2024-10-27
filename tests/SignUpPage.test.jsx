@@ -355,4 +355,13 @@ describe("title", () => {
 
         expect(headings.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Has the correct text", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        render(<SignUpPage createAnAccount={onSubmit} />);
+
+        expect(screen.queryByRole("heading", { name: /Figby/i }))
+            .toBeInTheDocument();
+    })
 })
