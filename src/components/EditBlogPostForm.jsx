@@ -36,6 +36,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     return (
         <>
             <Link>Create</Link>
+            <Link>Sign Up</Link>
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
