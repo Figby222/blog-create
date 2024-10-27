@@ -169,5 +169,27 @@ const logInUser = async (username, email, password) => {
 
 }
 
+const deleteComment = async (postId, commentId, bearerToken) => {
+    try {
+        const response = await fetch(`${apiLink}/posts/${postId}/comments/${commentId}`, {
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": bearerToken,
+            },
+            method: "DELETE"
+        });
+    
+        const data = await response.json();
 
-export { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser }
+        return { data }
+    } catch(err) {
+        return { errors: [
+            err
+        ]}
+    }
+}
+
+
+
+export { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser, deleteComment }
