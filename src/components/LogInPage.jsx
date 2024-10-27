@@ -22,7 +22,7 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
 
     return (
         <>
-            <Link></Link>
+            <Link>Create</Link>
             <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
                 <section className="errors">
                     <Errors errors={errors} />
