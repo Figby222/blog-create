@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Form from "./Form";
 import { useState } from "react";
 import Errors from "./Errors.jsx";
+import { Link } from "react-router-dom"
 
 const LogInPage = ({ logInUser, storeBearerToken }) => {
     const [ username, setUsername ] = useState("");
@@ -21,6 +22,7 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
 
     return (
         <>
+            <Link></Link>
             <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
                 <section className="errors">
                     <Errors errors={errors} />
