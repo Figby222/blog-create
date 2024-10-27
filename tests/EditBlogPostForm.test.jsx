@@ -1086,4 +1086,35 @@ describe("Links", () => {
         expect(screen.queryByRole("link", { name: /Create/i }))
             .toBeInTheDocument();
     })
+
+    it("Renders a Sign Up link", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+        
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        expect(screen.queryByRole("link", { name: /Sign Up/i }))
+            .toBeInTheDocument();
+    })
 })
