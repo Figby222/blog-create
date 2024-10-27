@@ -5,6 +5,8 @@ import Header from "./Header.jsx";
 const Blogs = ({ useAllData, getBearerToken }) => {
     const { error, loading, data } = useAllData();
 
+    getBearerToken();
+
     if (loading) {
         return <h1 className="loading">Loading...</h1>
     }
