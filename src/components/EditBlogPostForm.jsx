@@ -4,6 +4,7 @@ import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Form from "./Form.jsx";
+import { Link } from "react-router-dom";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost }) => {
     const { postId } = useParams();
@@ -34,6 +35,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
 
     return (
         <>
+            <Link></Link>
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
