@@ -1364,4 +1364,64 @@ describe("Comments", () => {
 
 
     })
+
+    it("Can render multiple comments", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+            comments: [
+                {
+                    id: 1,
+                    creatorId: 1,
+                    creator: "TestCreator",
+                    text: "Test Text",
+                },
+                {
+                    id: 2,
+                    creatorId: 2,
+                    creator: "TestDifferentCreator",
+                    text: "TestDifferentText"
+                }
+            ]
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const mockDeleteComment = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={mockDeleteComment} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        const deleteButtons = screen.queryAllByRole("button", {name: /Delete Comment/i });
+
+        expect(screen.queryByText(/TestCreator/i))
+            .toBeInTheDocument();
+        expect(screen.queryByText(/Test Text/i))
+            .toBeInTheDocument();
+
+        expect(screen.queryByText(/TestDifferentCreator/i))
+            .toBeInTheDocument();
+        expect(screen.queryByText(/TestDifferentText/i))
+            .toBeInTheDocument();
+
+        expect(deleteButtons.length).toBeGreaterThanOrEqual(2);
+
+
+    })
 })
