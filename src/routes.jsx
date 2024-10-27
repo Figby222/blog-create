@@ -3,7 +3,8 @@ import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
 import SignUpPage from "./components/SignUpPage.jsx";
 import LogInPage from "./components/LogInPage.jsx";
-import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser, deleteComment } from "./utils/api.jsx";
+import Blogs from "./components/Blogs.jsx";
+import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser, deleteComment, useBlogsListData } from "./utils/api.jsx";
 import { getBearerToken, storeBearerToken } from "./utils/storage.jsx"
 
 const routes = [
@@ -26,6 +27,10 @@ const routes = [
     {
         path: "/log-in",
         element: <LogInPage storeBearerToken={storeBearerToken} logInUser={logInUser} />
+    },
+    {
+        path: "/posts",
+        element: <Blogs useAllData={useBlogsListData} getBearerToken={getBearerToken} />
     }
 
 
