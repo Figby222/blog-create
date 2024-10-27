@@ -303,4 +303,17 @@ describe("Using bearer token", () => {
         expect(mockGetBearerToken)
             .toHaveBeenCalled();
     })
+
+    it("Calls useAllData with bearer token", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: []
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(mockUseAllData)
+            .toHaveBeenCalledWith("Bearer testToken");
+    })
 })
