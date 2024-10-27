@@ -380,3 +380,17 @@ describe("Errors", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("Links", () => {
+    it("Renders a link", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        const mockStoreBearerToken = vi.fn(() => ({}));
+
+        render(<LogInPage logInUser={onSubmit} storeBearerToken={mockStoreBearerToken} />);
+
+        const links = screen.queryAllByRole("link");
+
+        expect(links.length).toBeGreaterThanOrEqual(1);
+    })
+})
