@@ -19,7 +19,7 @@ describe("useAllData", () => {
     it("Calls useAllData", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(mockUseAllData).toHaveBeenCalled();
     })
@@ -29,7 +29,7 @@ describe("Loading", () => {
     it("Renders loading when loading", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const loadingElements = screen.queryAllByText(/Loading/i);
 
@@ -44,7 +44,7 @@ describe("Loading", () => {
             comments: [],
         })
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const loadingElements = screen.queryAllByText(/Loading/i);
 
@@ -56,7 +56,7 @@ describe("Loading", () => {
 describe("Error", () => {
     it("Renders error on error", () => {
         const mockUseAllData = getUseAllDataMock(true, false, null);
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByText(/Error/i))
             .toBeInTheDocument();
@@ -70,7 +70,7 @@ describe("Error", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByText(/Error/i))
             .not.toBeInTheDocument();
@@ -86,7 +86,7 @@ describe("Title", () => {
             comments: [],
         })
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByText("Title"))
             .toBeInTheDocument();
@@ -100,7 +100,7 @@ describe("Title", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
 
         expect(screen.queryByLabelText(/Title/i))
@@ -115,7 +115,7 @@ describe("Title", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -131,7 +131,7 @@ describe("Title", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -149,7 +149,7 @@ describe("Title", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         
@@ -169,7 +169,7 @@ describe("Title", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
 
@@ -193,7 +193,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByText("Text"))
             .toBeInTheDocument();
@@ -207,7 +207,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByLabelText(/Text/i))
             .toBeInTheDocument();
@@ -221,7 +221,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -237,7 +237,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -255,7 +255,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const textInput = screen.queryByLabelText(/Text/i);
 
@@ -275,7 +275,7 @@ describe("Text", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
 
         const textInput = screen.queryByLabelText(/Text/i);
@@ -300,7 +300,7 @@ describe("Submit button", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByRole("button", { name: /Submit/i }))
             .toBeInTheDocument();
@@ -314,7 +314,7 @@ describe("Submit button", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(screen.queryByRole("button", { name: /Submit/i }).textContent)
             .toMatch(/Submit/i);
@@ -332,7 +332,7 @@ describe("Submission", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
 
         const titleInput = screen.queryByLabelText(/Title/i);
@@ -361,7 +361,7 @@ describe("Submission", () => {
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         expect(mockUpdateBlogPut)
             .not.toHaveBeenCalled();
@@ -380,7 +380,7 @@ describe("Submission", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />
             }
         ]
         
@@ -414,7 +414,7 @@ describe("Submission", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />
             }
         ]
         
@@ -448,7 +448,7 @@ describe("Submission", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />
             }
         ]
         
@@ -491,7 +491,7 @@ describe("Submission Errors", () => {
             ]
         }));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -522,7 +522,7 @@ describe("Submission Errors", () => {
             ]
         }));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -556,7 +556,7 @@ describe("Submission Errors", () => {
             ]
         }));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -589,7 +589,7 @@ describe("Using bearer token", () => {
 
         const mockGetBearerToken = vi.fn(() => "Bearer testToken");
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} deleteComment={() => ({})} />);
 
         const titleInput = screen.queryByLabelText(/Title/i);
         const textInput = screen.queryByLabelText(/Text/i);
@@ -622,7 +622,7 @@ describe("Using bearer token", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={updateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={updateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} deleteComment={() => ({})} />
             }
         ]
 
@@ -666,7 +666,7 @@ describe("Using bearer token", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={() => ({})} deleteComment={() => ({})} />
             }
         ]
         
@@ -715,7 +715,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -748,7 +748,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -786,7 +786,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -820,7 +820,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -858,7 +858,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -898,7 +898,7 @@ describe("Delete button", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -939,7 +939,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         expect(screen.queryByText(/Publish/i))
             .toBeInTheDocument();
@@ -960,7 +960,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         expect(screen.queryByLabelText(/Publish/i))
             .toBeInTheDocument();
@@ -980,7 +980,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         expect(screen.queryByLabelText(/Publish/i).checked)
             .toBe(true);
@@ -1000,7 +1000,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         expect(screen.queryByLabelText(/Publish/i).checked)
             .toBe(false);
@@ -1020,7 +1020,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateblogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateblogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         const publishButton = screen.queryByLabelText(/Publish/i);
 
@@ -1046,7 +1046,7 @@ describe("Publish button", () => {
 
         const mockDeletePost = vi.fn(() => ({}));
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />);
+        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />);
 
         const publishButton = screen.queryByLabelText(/Publish/i);
 
@@ -1080,7 +1080,7 @@ describe("Links", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -1113,7 +1113,7 @@ describe("Links", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -1145,7 +1145,7 @@ describe("Links", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -1177,7 +1177,7 @@ describe("Links", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -1211,7 +1211,7 @@ describe("title", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
@@ -1244,7 +1244,7 @@ describe("title", () => {
         const routes = [
             {
                 path: "/posts/:postId/edit",
-                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} />
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={() => ({})} />
             }
         ]
         
