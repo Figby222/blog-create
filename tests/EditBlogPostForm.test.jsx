@@ -1549,7 +1549,7 @@ describe("Comments", () => {
         ]
         
         const router = createMemoryRouter(routes, {
-            initialEntries: [ "/", "/posts/5/edit" ],
+            initialEntries: [ "/", "/posts/4/edit" ],
             initialIndex: 1
         });
 
@@ -1562,7 +1562,7 @@ describe("Comments", () => {
         await user.click(deleteCommentButton);
 
         expect(mockDeleteComment)
-            .toHaveBeenCalledWith(1, "Bearer testToken");
+            .toHaveBeenCalledWith("4", 1, "Bearer testToken");
 
     })
 
@@ -1617,8 +1617,8 @@ describe("Comments", () => {
 
 
         expect(mockDeleteComment)
-            .not.toHaveBeenCalledWith(1, "Bearer testToken");
+            .not.toHaveBeenCalledWith("4", 1, "Bearer testToken");
         expect(mockDeleteComment)
-            .toHaveBeenCalledWith(2, "Bearer testDifferentToken");
+            .toHaveBeenCalledWith("5", 2, "Bearer testDifferentToken");
     })
 })
