@@ -393,4 +393,15 @@ describe("Links", () => {
 
         expect(links.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Renders a Create link", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        const mockStoreBearerToken = vi.fn(() => ({}));
+
+        render(<LogInPage logInUser={onSubmit} storeBearerToken={mockStoreBearerToken} />);
+
+        expect(screen.queryByRole("link", { name: /Create/i }))
+            .toBeInTheDocument();
+    })
 })
