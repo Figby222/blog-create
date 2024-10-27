@@ -343,6 +343,15 @@ describe("Links", () => {
         expect(screen.queryByRole("link", { name: /Log In/i }))
             .toBeInTheDocument();
     })
+
+    it("Renders a Blogs link", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        render(<SignUpPage createAnAccount={onSubmit} />);
+
+        expect(screen.queryByRole("link", { name: /Blogs/i }))
+            .toBeInTheDocument();
+    })
 })
 
 describe("title", () => {
