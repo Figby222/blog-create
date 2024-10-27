@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Form from "./Form.jsx";
 import { Link } from "react-router-dom";
+import Header from "./Header.jsx";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost }) => {
     const { postId } = useParams();
@@ -33,12 +34,27 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         const response = await deletePost(postId, bearerToken);
     }
 
+    const links = [
+        {
+            name: "Create",
+            path: "/posts/create",
+            isCurrentPage: false,
+        },
+        {
+            name: "Sign Up",
+            path: "/sign-up",
+            isCurrentPage: false,
+        },
+        {
+            name: "Log In",
+            path: "/log-in",
+            isCurrentPage: false,
+        }
+    ]
+
     return (
         <>
-            <h1 className="main-heading"></h1>
-            <Link>Create</Link>
-            <Link>Sign Up</Link>
-            <Link>Log In</Link>
+            <Header links={links} loggedInUser={null} />
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
