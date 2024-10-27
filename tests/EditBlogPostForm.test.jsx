@@ -1475,4 +1475,45 @@ describe("Comments", () => {
 
 
     })
+
+    it("Only calls deleteComment on delete", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+            comments: [
+                {
+                    id: 1,
+                    creatorId: 1,
+                    creator: "TestCreator",
+                    text: "Test Text",
+                }
+            ]
+        })
+        
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const mockDeleteComment = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={mockDeleteComment} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        expect(mockDeleteComment)
+            .not.toHaveBeenCalled();
+    })
 })
