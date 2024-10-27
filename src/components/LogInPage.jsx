@@ -3,6 +3,7 @@ import Form from "./Form";
 import { useState } from "react";
 import Errors from "./Errors.jsx";
 import { Link } from "react-router-dom"
+import Header from "./Header.jsx";
 
 const LogInPage = ({ logInUser, storeBearerToken }) => {
     const [ username, setUsername ] = useState("");
@@ -20,12 +21,27 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
         response.token && storeBearerToken(response.token);
     }
 
+    const links = [
+        {
+            name: "Create",
+            path: "/posts/create",
+            isCurrentPage: false,
+        },
+        {
+            name: "Sign Up",
+            path: "/sign-up",
+            isCurrentPage: false,
+        },
+        {
+            name: "Log In",
+            path: "/log-in",
+            isCurrentPage: true,
+        },
+    ]
+
     return (
         <>
-            <h1 className="main-heading"></h1>
-            <Link>Create</Link>
-            <Link>Sign Up</Link>
-            <Link>Log In</Link>
+            <Header links={links} loggedInUser={null} />
             <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
                 <section className="errors">
                     <Errors errors={errors} />
