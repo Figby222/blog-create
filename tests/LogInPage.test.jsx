@@ -440,4 +440,15 @@ describe("title", () => {
 
         expect(headings.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Has the correct text", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        const mockStoreBearerToken = vi.fn(() => ({}));
+
+        render(<LogInPage logInUser={onSubmit} storeBearerToken={mockStoreBearerToken} />);
+
+        expect(screen.queryByRole("heading", { name: /Figby/i }))
+            .toBeInTheDocument();
+    })
 })
