@@ -316,4 +316,13 @@ describe("Links", () => {
 
         expect(links.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Renders a Create link", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        render(<SignUpPage createAnAccount={onSubmit} />);
+
+        expect(screen.queryByRole("link", { name: /Create/i }))
+            .toBeInTheDocument();
+    })
 })
