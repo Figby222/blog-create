@@ -7,7 +7,7 @@ import Form from "./Form.jsx";
 import { Link } from "react-router-dom";
 import Header from "./Header.jsx";
 
-const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost }) => {
+const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost, deleteComment }) => {
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
@@ -66,6 +66,7 @@ EditBlogPostForm.propTypes = {
     updateBlogPut: PropTypes.func.isRequired,
     getBearerToken: PropTypes.func.isRequired,
     deletePost: PropTypes.func.isRequired,
+    deleteComment: PropTypes.func.isRequired,
 };
 
 export default EditBlogPostForm;
