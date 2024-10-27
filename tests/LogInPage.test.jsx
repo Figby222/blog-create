@@ -427,3 +427,17 @@ describe("Links", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("title", () => {
+    it("Renders a heading", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        const mockStoreBearerToken = vi.fn(() => ({}));
+
+        render(<LogInPage logInUser={onSubmit} storeBearerToken={mockStoreBearerToken} />);
+
+        const headings = screen.queryAllByRole("heading");
+
+        expect(headings.length).toBeGreaterThanOrEqual(1);
+    })
+})
