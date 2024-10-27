@@ -16,7 +16,7 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     }
     return (
         <>
-            <Link></Link>
+            <Link>Create</Link>
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={errors} />
         </>
     )
