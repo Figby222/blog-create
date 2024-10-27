@@ -698,7 +698,7 @@ describe("Delete button", () => {
 
         _render(<RouterProvider router={router} />);
 
-        expect(screen.queryByRole("button", { name: /Delete/i} )).toBeInTheDocument();
+        expect(screen.queryByRole("button", { name: "Delete"} )).toBeInTheDocument();
 
         
     })
@@ -730,7 +730,7 @@ describe("Delete button", () => {
 
         _render(<RouterProvider router={router} />);
 
-        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+        const deleteButton = screen.queryByRole("button", { name: "Delete" });
 
         const user = userEvent.setup();
 
@@ -800,7 +800,7 @@ describe("Delete button", () => {
 
         _render(<RouterProvider router={router} />);
 
-        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+        const deleteButton = screen.queryByRole("button", { name: "Delete" });
 
         const user = userEvent.setup();
 
@@ -837,7 +837,7 @@ describe("Delete button", () => {
 
         _render(<RouterProvider router={router} />);
 
-        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+        const deleteButton = screen.queryByRole("button", { name: "Delete" });
 
         const user = userEvent.setup();
 
@@ -876,7 +876,7 @@ describe("Delete button", () => {
 
         _render(<RouterProvider router={router} />);
 
-        const deleteButton = screen.queryByRole("button", { name: /Delete/i });
+        const deleteButton = screen.queryByRole("button", { name: "Delete" });
 
         const user = userEvent.setup();
 
