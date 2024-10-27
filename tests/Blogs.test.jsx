@@ -316,4 +316,19 @@ describe("Using bearer token", () => {
         expect(mockUseAllData)
             .toHaveBeenCalledWith("Bearer testToken");
     })
-})
+
+    it("Calls useAllData with different token", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: []
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testDifferentToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(mockUseAllData)
+            .not.toHaveBeenCalledWith("Bearer testToken");
+        expect(mockUseAllData)
+            .toHaveBeenCalledWith("Bearer testDifferentToken")
+    })
+});
