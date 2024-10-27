@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import Form from "./Form.jsx";
 import { useState } from "react";
 import Errors from "./Errors.jsx"
+import { Link } from "react-router-dom";
 
 const SignUpPage = ({ createAnAccount }) => {
     const [ username, setUsername ] = useState("");
@@ -18,6 +19,7 @@ const SignUpPage = ({ createAnAccount }) => {
 
     return (
         <>
+            <Link></Link>
             <Form submitListener={() => handleFormSubmission(username, email, password, confirmPassword)} submitButtonText={"Submit"}>
                 <div className="username-container">
                     <label htmlFor="username" className="username">
