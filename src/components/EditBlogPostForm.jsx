@@ -37,7 +37,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const onDeleteComment = async (commentId) => {
         const bearerToken = getBearerToken();
 
-        const response = await deleteComment(commentId, bearerToken)
+        const response = await deleteComment(postId, commentId, bearerToken)
     }
 
     const links = [
