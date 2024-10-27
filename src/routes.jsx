@@ -3,7 +3,7 @@ import EditBlogPostForm from "./components/EditBlogPostForm.jsx";
 import CreateBlogPostForm from "./components/CreateBlogPostForm.jsx";
 import SignUpPage from "./components/SignUpPage.jsx";
 import LogInPage from "./components/LogInPage.jsx";
-import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser } from "./utils/api.jsx";
+import { useBlogPostData, updateBlogPut, createBlogPost, deletePost, createAnAccount, logInUser, deleteComment } from "./utils/api.jsx";
 import { getBearerToken, storeBearerToken } from "./utils/storage.jsx"
 
 const routes = [
@@ -13,7 +13,7 @@ const routes = [
     },
     {
         path: "/posts/:postId/edit",
-        element: <EditBlogPostForm  useAllData={useBlogPostData} updateBlogPut={updateBlogPut} getBearerToken={getBearerToken} deletePost={deletePost} />
+        element: <EditBlogPostForm  useAllData={useBlogPostData} updateBlogPut={updateBlogPut} getBearerToken={getBearerToken} deletePost={deletePost} deleteComment={deleteComment} />
     },
     {
         path: "/posts/create",
