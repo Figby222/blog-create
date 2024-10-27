@@ -20,6 +20,7 @@ const SignUpPage = ({ createAnAccount }) => {
     return (
         <>
             <Link>Create</Link>
+            <Link>Sign Up</Link>
             <Form submitListener={() => handleFormSubmission(username, email, password, confirmPassword)} submitButtonText={"Submit"}>
                 <div className="username-container">
                     <label htmlFor="username" className="username">
