@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header.jsx";
 
 const Blogs = ({ useAllData, getBearerToken }) => {
-    const { error, loading, data } = useAllData();
+    const { error, loading, data } = useAllData("Bearer testToken");
 
     getBearerToken();
 
