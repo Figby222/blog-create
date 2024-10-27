@@ -445,3 +445,17 @@ describe("Links", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("title", () => {
+    it("Renders a heading", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        const headings = screen.queryAllByRole("heading");
+
+        expect(headings.length).toBeGreaterThanOrEqual(1);
+    })
+})
