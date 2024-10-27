@@ -411,4 +411,15 @@ describe("Links", () => {
 
         expect(links.length).toBeGreaterThanOrEqual(1);
     })
+
+    it("Renders a Create link", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByRole("link", { name: /Create/i }))
+            .toBeInTheDocument();
+    })
 })
