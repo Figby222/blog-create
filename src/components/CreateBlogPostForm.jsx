@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
@@ -15,6 +16,7 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     }
     return (
         <>
+            <Link></Link>
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={errors} />
         </>
     )
