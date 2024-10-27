@@ -17,7 +17,7 @@ describe("useAllData", () => {
     it("Calls useAllData", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(mockUseAllData).toHaveBeenCalled();
     })
@@ -25,7 +25,7 @@ describe("useAllData", () => {
     it("Shows loading if loading", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Loading/i))
             .toBeInTheDocument();
@@ -42,7 +42,7 @@ describe("useAllData", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Loading/i))
             .not.toBeInTheDocument();
@@ -61,7 +61,7 @@ describe("Blog list", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Test Blog Title/i)).toBeInTheDocument();
     })
@@ -77,7 +77,7 @@ describe("Blog list", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText("Test Blog Title"))
             .not.toBeInTheDocument();
@@ -97,7 +97,7 @@ describe("Blog list", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Test Blog Username/i))
             .toBeInTheDocument();
@@ -114,7 +114,7 @@ describe("Blog list", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Test Blog Username/i))
             .not.toBeInTheDocument();
@@ -139,7 +139,7 @@ describe("Blog list", () => {
             ]
         })
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByText(/Test Blog Title/i))
             .toBeInTheDocument();
@@ -161,7 +161,7 @@ describe("links", () => {
             blogs: []
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         const links = screen.queryAllByRole("link");
 
@@ -173,7 +173,7 @@ describe("links", () => {
             blogs: []
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("link", { name: /Blogs/i }))
             .toBeInTheDocument();
@@ -184,7 +184,7 @@ describe("links", () => {
             blogs: []
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("link", { name: /Sign Up/i }))
             .toBeInTheDocument();
@@ -195,7 +195,7 @@ describe("links", () => {
             blogs: []
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("link", { name: /Log In/i }))
             .toBeInTheDocument();
@@ -208,7 +208,7 @@ describe("Title", () => {
             blogs: []
         })
     
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
     
         const headings = screen.queryAllByRole("heading");
     
@@ -220,7 +220,7 @@ describe("Title", () => {
             blogs: []
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("heading", { name: /Figby/i }))
             .toBeInTheDocument();
@@ -239,7 +239,7 @@ describe("Blog Links", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("link", { name: /Test Title/i }))
             .toBeInTheDocument();
@@ -257,7 +257,7 @@ describe("Blog Links", () => {
 
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
     
         expect(screen.queryByRole("link", { name: /Test Title/i }))
             .not.toBeInTheDocument();
@@ -281,7 +281,7 @@ describe("Blog Links", () => {
             ]
         });
 
-        render(<Blogs useAllData={mockUseAllData} />);
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={() => "Bearer testToken"} />);
 
         expect(screen.queryByRole("link", { name: /Test Title/i }))
             .toBeInTheDocument();
