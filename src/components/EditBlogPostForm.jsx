@@ -59,10 +59,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
             <section className="comments">
-                <h2 className="comment-creator">TestCreator</h2>
-                <p className="comment-text">Test Text</p>
+                <h2 className="comment-creator">{ data.comments.length > 0 && data.comments[0].creator }</h2>
+                <p className="comment-text">{ data.comments.length > 0 && data.comments[0].text }</p>
                 <Form submitListener={() => {}} submitButtonText={"Delete Comment"}>
-                    
+
                 </Form>
             </section>
         </>
