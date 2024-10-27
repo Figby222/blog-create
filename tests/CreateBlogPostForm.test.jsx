@@ -398,3 +398,17 @@ describe("Publish button", () => {
             .toBe(false);
     })
 })
+
+describe("Links", () => {
+    it("Renders a link", () => {
+        const mockCreateBlogPost = vi.fn(() => ({}));
+
+        const mockGetBearerToken = vi.fn(() => null);
+
+        render(<CreateBlogPostForm createBlogPost={mockCreateBlogPost} getBearerToken={mockGetBearerToken} />);
+
+        const links = screen.queryAllByRole("link");
+
+        expect(links.length).toBeGreaterThanOrEqual(1);
+    })
+})
