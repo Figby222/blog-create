@@ -18,6 +18,11 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
 
     const links = [
         {
+            name: "Blogs",
+            path: "/posts/create",
+            isCurrentPage: false,
+        },
+        {
             name: "Create",
             path: "/posts/create",
             isCurrentPage: true,
