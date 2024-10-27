@@ -18,6 +18,11 @@ const Blogs = ({ useAllData, getBearerToken }) => {
             isCurrentPage: true,
         },
         {
+            name: "Create",
+            path: "/posts/create",
+            isCurrentPage: false,
+        },
+        {
             name: "Sign Up",
             path: "/sign-up",
             isCurrentPage: false,
