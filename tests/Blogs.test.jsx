@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import { render, getUseAllDataMock } from "../lib/testing-utils.jsx";
 import Blogs from "../src/components/Blogs.jsx";
@@ -287,5 +287,20 @@ describe("Blog Links", () => {
             .toBeInTheDocument();
         expect(screen.queryByRole("link", { name: /Test Different Title/i }))
             .toBeInTheDocument();
+    })
+})
+
+describe("Using bearer token", () => {
+    it("Calls getBearerToken", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: []
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(mockGetBearerToken)
+            .toHaveBeenCalled();
     })
 })
