@@ -3,6 +3,7 @@ import Form from "./Form.jsx";
 import { useState } from "react";
 import Errors from "./Errors.jsx"
 import { Link } from "react-router-dom";
+import Header from "./Header.jsx";
 
 const SignUpPage = ({ createAnAccount }) => {
     const [ username, setUsername ] = useState("");
@@ -17,12 +18,27 @@ const SignUpPage = ({ createAnAccount }) => {
         response.errors && setErrors(response.errors);
     }
 
+    const links = [
+        {
+            name: "Create",
+            path: "/posts/create",
+            isCurrentPage: false,
+        },
+        {
+            name: "Sign Up",
+            path: "/sign-up",
+            isCurrentPage: true,
+        },
+        {
+            name: "Log In",
+            path: "/log-in",
+            isCurrentPage: false,
+        }
+    ]
+
     return (
         <>
-            <h1 className="main-heading"></h1>
-            <Link>Create</Link>
-            <Link>Sign Up</Link>
-            <Link>Log In</Link>
+            <Header links={links} loggedInUser={null} />
             <Form submitListener={() => handleFormSubmission(username, email, password, confirmPassword)} submitButtonText={"Submit"}>
                 <div className="username-container">
                     <label htmlFor="username" className="username">
