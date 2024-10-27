@@ -344,3 +344,15 @@ describe("Links", () => {
             .toBeInTheDocument();
     })
 })
+
+describe("title", () => {
+    it("Renders a heading", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        render(<SignUpPage createAnAccount={onSubmit} />);
+
+        const headings = screen.queryAllByRole("heading");
+
+        expect(headings.length).toBeGreaterThanOrEqual(1);
+    })
+})
