@@ -334,4 +334,13 @@ describe("Links", () => {
         expect(screen.queryByRole("link", { name: /Sign Up/i }))
             .toBeInTheDocument();
     })
+
+    it("Renders a Log In link", () => {
+        const onSubmit = vi.fn(() => ({}));
+
+        render(<SignUpPage createAnAccount={onSubmit} />);
+
+        expect(screen.queryByRole("link", { name: /Log In/i }))
+            .toBeInTheDocument();
+    })
 })
