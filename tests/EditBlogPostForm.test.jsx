@@ -41,6 +41,7 @@ describe("Loading", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
+            comments: [],
         })
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -65,7 +66,8 @@ describe("Error", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -80,7 +82,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         })
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -93,7 +96,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -107,7 +111,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -122,7 +127,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
             text: "Test Different Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -139,7 +145,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -158,7 +165,8 @@ describe("Title", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -181,7 +189,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -194,7 +203,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -207,7 +217,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -222,7 +233,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
             text: "Test Different Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -239,7 +251,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -258,7 +271,8 @@ describe("Text", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -282,7 +296,8 @@ describe("Submit button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -295,7 +310,8 @@ describe("Submit button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} />);
@@ -310,7 +326,8 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -338,7 +355,8 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -353,7 +371,8 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Title",
             text: "Test Text",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -386,7 +405,8 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "Test Different Title",
             text: "Test Different Text",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -419,7 +439,8 @@ describe("Submission", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -460,7 +481,8 @@ describe("Submission Errors", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -490,7 +512,8 @@ describe("Submission Errors", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -522,7 +545,8 @@ describe("Submission Errors", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({
@@ -557,7 +581,8 @@ describe("Using bearer token", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         })
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -586,7 +611,8 @@ describe("Using bearer token", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const updateBlogPut = vi.fn(() => ({}));
@@ -628,7 +654,8 @@ describe("Using bearer token", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -675,7 +702,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         })
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -707,7 +735,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -744,7 +773,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -777,7 +807,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -814,7 +845,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -853,7 +885,8 @@ describe("Delete button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -896,7 +929,8 @@ describe("Publish button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -917,6 +951,7 @@ describe("Publish button", () => {
             title: "",
             text: "",
             published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -936,6 +971,7 @@ describe("Publish button", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -954,7 +990,8 @@ describe("Publish button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -973,7 +1010,8 @@ describe("Publish button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         })
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -998,7 +1036,8 @@ describe("Publish button", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: false
+            published: false,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1028,7 +1067,8 @@ describe("Links", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             title: "",
             text: "",
-            published: true
+            published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1061,6 +1101,7 @@ describe("Links", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1092,6 +1133,7 @@ describe("Links", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1123,6 +1165,7 @@ describe("Links", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1156,6 +1199,7 @@ describe("title", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
@@ -1188,6 +1232,7 @@ describe("title", () => {
             title: "",
             text: "",
             published: true,
+            comments: [],
         });
 
         const mockUpdateBlogPut = vi.fn(() => ({}));
