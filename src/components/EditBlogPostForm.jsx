@@ -64,7 +64,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
                         return <li className="comment-li" key={comment.id}>
                             <h2 className="comment-creator">{ comment.creator }</h2>
                             <p className="comment-text">{ comment.text }</p>
-                            <Form submitListener={() => deleteComment()} submitButtonText={"Delete Comment"}></Form>
+                            <Form submitListener={() => deleteComment(1, "Bearer testToken")} submitButtonText={"Delete Comment"}></Form>
                         </li>
                     })}
                 </ul>
