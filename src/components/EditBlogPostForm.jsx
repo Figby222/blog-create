@@ -34,6 +34,12 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         const response = await deletePost(postId, bearerToken);
     }
 
+    const onDeleteComment = async (commentId) => {
+        const bearerToken = getBearerToken();
+
+        const response = await deleteComment(commentId, bearerToken)
+    }
+
     const links = [
         {
             name: "Create",
@@ -64,7 +70,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
                         return <li className="comment-li" key={comment.id}>
                             <h2 className="comment-creator">{ comment.creator }</h2>
                             <p className="comment-text">{ comment.text }</p>
-                            <Form submitListener={() => deleteComment(1, "Bearer testToken")} submitButtonText={"Delete Comment"}></Form>
+                            <Form submitListener={() => onDeleteComment(comment.id)} submitButtonText={"Delete Comment"}></Form>
                         </li>
                     })}
                 </ul>
