@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header.jsx";
 
 
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
@@ -14,12 +15,27 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
 
         response.errors && setErrors(response.errors);
     }
+
+    const links = [
+        {
+            name: "Create",
+            path: "/posts/create",
+            isCurrentPage: true,
+        },
+        {
+            name: "Sign Up",
+            path: "/sign-up",
+            isCurrentPage: false,
+        },
+        {
+            name: "Log In",
+            path: "/log-in",
+            isCurrentPage: false,
+        }
+    ]
     return (
         <>
-            <h1 className="main-heading"></h1>
-            <Link>Create</Link>
-            <Link>Sign Up</Link>
-            <Link>Log In</Link>
+            <Header links={links} loggedInUser={null} />
             <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={""} initialText={""} initialPublishedStatus={false} errors={errors} />
         </>
     )
