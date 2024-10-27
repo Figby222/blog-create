@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Header from "./Header.jsx";
 
-const Blogs = ({ useAllData }) => {
+const Blogs = ({ useAllData, getBearerToken }) => {
     const { error, loading, data } = useAllData();
 
     if (loading) {
@@ -58,7 +58,8 @@ const Blogs = ({ useAllData }) => {
 
 
 Blogs.propTypes = {
-    useAllData: PropTypes.func.isRequired
+    useAllData: PropTypes.func.isRequired,
+    getBearerToken: PropTypes.func.isRequired,
 }
 
 export default Blogs;
