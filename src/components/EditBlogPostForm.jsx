@@ -11,8 +11,6 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
-
-    deleteComment();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
@@ -66,7 +64,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
                         return <li className="comment-li" key={comment.id}>
                             <h2 className="comment-creator">{ comment.creator }</h2>
                             <p className="comment-text">{ comment.text }</p>
-                            <Form submitListener={() => {}} submitButtonText={"Delete Comment"}></Form>
+                            <Form submitListener={() => deleteComment()} submitButtonText={"Delete Comment"}></Form>
                         </li>
                     })}
                 </ul>
