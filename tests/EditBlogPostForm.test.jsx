@@ -1671,4 +1671,47 @@ describe("Comments", () => {
         expect(mockDeleteComment)
             .toHaveBeenCalledWith("5", 2, "Bearer testDifferentToken");
     })
+
+    it("Renders a comments heading", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            title: "",
+            text: "",
+            published: true,
+            comments: [
+                {
+                    id: 2,
+                    creatorId: 2,
+                    creator: {
+                        username: "Test Comment Creator Username"
+                    },
+                    text: "Test Comment Text",
+                }
+            ]
+        });
+
+        const mockUpdateBlogPut = vi.fn(() => ({}));
+        
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        const mockDeletePost = vi.fn(() => ({}));
+
+        const mockDeleteComment = vi.fn(() => ({}));
+
+        const routes = [
+            {
+                path: "/posts/:postId/edit",
+                element: <EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={mockUpdateBlogPut} getBearerToken={mockGetBearerToken} deletePost={mockDeletePost} deleteComment={mockDeleteComment} />
+            }
+        ]
+        
+        const router = createMemoryRouter(routes, {
+            initialEntries: [ "/", "/posts/5/edit" ],
+            initialIndex: 1
+        });
+
+        _render(<RouterProvider router={router} />);
+
+        expect(screen.queryByRole("heading", { name: /Comments/i }))
+            .toBeInTheDocument();
+    })
 })
