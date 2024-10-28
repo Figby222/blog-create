@@ -345,3 +345,25 @@ describe("Using bearer token", () => {
             .toHaveBeenCalledWith("Bearer testDifferentToken")
     })
 });
+
+describe("Published status", () => {
+    it("Renders unpublished if unpublished", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: [
+                {
+                    title: "Test Title",
+                    text: "Test Text",
+                    username: "Creator",
+                    published: false,
+                }
+            ]
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByText("Unpublished"))
+            .toBeInTheDocument();
+    })
+})
