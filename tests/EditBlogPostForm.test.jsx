@@ -1306,7 +1306,9 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestCreator",
+                    creator: {
+                        username: "TestCreator",
+                    },
                     text: "Test Text"
                 }
             ]
@@ -1356,7 +1358,9 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestDifferentCreator",
+                    creator: {
+                        username: "TestDifferentCreator",
+                    },
                     text: "TestDifferentText",
                 }
             ]
@@ -1408,13 +1412,17 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestCreator",
+                    creator: {
+                        username: "TestCreator",
+                    },
                     text: "Test Text",
                 },
                 {
                     id: 2,
                     creatorId: 2,
-                    creator: "TestDifferentCreator",
+                    creator: {
+                        username: "TestDifferentCreator",
+                    },
                     text: "TestDifferentText"
                 }
             ]
@@ -1468,7 +1476,9 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestCreator",
+                    creator: {
+                        creator: "TestCreator",
+                    },
                     text: "TestText",
                 }
             ]
@@ -1519,7 +1529,9 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestCreator",
+                    creator: {
+                        creator: "TestCreator",
+                    },
                     text: "Test Text",
                 }
             ]
@@ -1560,7 +1572,9 @@ describe("Comments", () => {
                 {
                     id: 1,
                     creatorId: 1,
-                    creator: "TestCreator",
+                    creator: {
+                        creator: "TestCreator",
+                    },
                     text: "Test Text",
                 }
             ],
@@ -1609,7 +1623,9 @@ describe("Comments", () => {
                 {
                     id: 2,
                     creatorId: 2,
-                    creator: "TestDifferentCreator",
+                    creator: {
+                        username: "TestDifferentCreator",
+                    },
                     text: "TestDifferentText"
                 }
             ],
