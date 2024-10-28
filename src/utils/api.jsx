@@ -31,7 +31,7 @@ const useBlogPostData = (postId) => {
             .finally(() => {
                 setLoading(false);
             })
-    })
+    }, [])
 
     return { error: error, loading: loading, data: data }
 }
