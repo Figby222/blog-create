@@ -36,6 +36,7 @@ const Blogs = ({ useAllData, getBearerToken }) => {
 
     return (
         <>
+        <p className="published">Unpublished</p>
         <header>
             <Header links={links} loggedInUser={null} />
         </header>
