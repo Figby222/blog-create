@@ -36,7 +36,7 @@ const Blogs = ({ useAllData, getBearerToken }) => {
 
     return (
         <>
-        <p className="published">Unpublished</p>
+        <p className="published">{ data && data.blogs.length > 0 && (data.blogs[0].published ? "Published" : "Unpublished") }</p>
         <header>
             <Header links={links} loggedInUser={null} />
         </header>
