@@ -70,6 +70,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
             <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
             </Form>
             <section className="comments">
+                <h1 className="comments-heading">Comments</h1>
                 <ul className="comments-ul">
                     { data.comments.map((comment) => {
                         return <li className="comment-li" key={comment.id}>
