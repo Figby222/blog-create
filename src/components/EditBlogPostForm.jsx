@@ -73,7 +73,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
                 <ul className="comments-ul">
                     { data.comments.map((comment) => {
                         return <li className="comment-li" key={comment.id}>
-                            <h2 className="comment-creator">{ comment.creator }</h2>
+                            <h2 className="comment-creator">{ comment.creator.username }</h2>
                             <p className="comment-text">{ comment.text }</p>
                             <Form submitListener={() => onDeleteComment(comment.id)} submitButtonText={"Delete Comment"}></Form>
                         </li>
