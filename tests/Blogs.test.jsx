@@ -377,4 +377,26 @@ describe("Published status", () => {
         expect(screen.queryByText("Unpublished"))
             .toBeInTheDocument();
     })
+
+    it("Renders published if published", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            blogs: [
+                {
+                    title: "Test Different Title",
+                    text: "Test Different Text",
+                    username: "Creator",
+                    published: true,
+                },
+            ],
+        });
+
+        const mockGetBearerToken = vi.fn(() => "Bearer testToken");
+
+        render(<Blogs useAllData={mockUseAllData} getBearerToken={mockGetBearerToken} />);
+
+        expect(screen.queryByText("Unpublished"))
+            .not.toBeInTheDocument();
+        expect(screen.queryByText("Published"))
+            .toBeInTheDocument();
+    })
 })
