@@ -6,7 +6,7 @@ const Header = ({ links, loggedInUser }) => {
         <>
             <h1 className="main-heading">Figby</h1>
             { links.map((link) => {
-                return <Link key={link.path}>{ link.name }</Link>
+                return <Link key={link.path} to={link.path}>{ link.name }</Link>
             })}
         </>
     )
