@@ -69,9 +69,9 @@ const updateBlogPut = async (postId, title, text, shouldPublish, bearerToken) =>
 
         return { data, errors: data.errors }
     } catch(err) {
-        return { errors: [
-            err
-        ]}
+        return { 
+            error: err 
+        }
     }
 }
 
@@ -99,9 +99,9 @@ const createBlogPost = async (title, text, shouldPublish, bearerToken) => {
         console.log(data);
         return { data, errors: data.errors }
     } catch(err) {
-        return { errors: [
-            err
-        ]}
+        return { 
+            error: err 
+        }
     }
 }
 
@@ -128,9 +128,9 @@ const deletePost = async (postId, bearerToken) => {
 
         return { data }
     } catch(err) {
-        return { errors: [
-            err
-        ]}
+        return { 
+            error: err 
+        }
     }
 
 }
@@ -158,9 +158,9 @@ const createAnAccount = async (username, email, password, confirmPassword) => {
 
         return { data, errors: data.errors };
     } catch (err) {
-        return { errors: [
-            err
-        ]}
+        return { 
+            error: err 
+        }
     }
 }
 
@@ -191,9 +191,9 @@ const logInUser = async (username, email, password) => {
         
         return { token: authToken, message: data.message, errors: data.errors }
     } catch(err) {
-        return { errors: [
-            err
-        ]};
+        return { 
+            error: err 
+        }
     }
 
 
@@ -220,9 +220,9 @@ const deleteComment = async (postId, commentId, bearerToken) => {
 
         return { data }
     } catch(err) {
-        return { errors: [
-            err
-        ]}
+        return { 
+            error: err 
+        }
     }
 }
 
