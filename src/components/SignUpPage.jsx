@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Form from "./Form.jsx";
 import { useState } from "react";
 import Errors from "./Errors.jsx"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
 
 const SignUpPage = ({ createAnAccount }) => {
@@ -11,11 +11,17 @@ const SignUpPage = ({ createAnAccount }) => {
     const [ password, setPassword ] = useState("");
     const [ confirmPassword, setConfirmPassword ] = useState("");
     const [ errors, setErrors ] = useState([]);
+    const navigate = useNavigate();
 
     const handleFormSubmission = async (username, email, password, confirmPassword) => {
         const response = await createAnAccount(username, email, password, confirmPassword);
         
-        response.errors && setErrors(response.errors);
+        if (response.errors) {
+            setErrors(response.errors);
+            return;
+        }
+
+        navigate("/log-in");
     }
 
     const links = [
