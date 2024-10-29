@@ -54,12 +54,16 @@ describe("Loading", () => {
 })
 
 describe("Error", () => {
-    it("Renders error on error", () => {
-        const mockUseAllData = getUseAllDataMock(true, false, null);
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
+    it("Throws error on error", () => {
+        const error = new Error("Test error");
+        error.status = 404;
 
-        expect(screen.queryByText(/Error/i))
-            .toBeInTheDocument();
+        console.error = vi.fn(() => ({}));
+
+        const mockUseAllData = getUseAllDataMock({ error: error }, false, null);
+
+        expect(() => render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />))
+            .toThrow();
     })
 
     it("Only renders error on error", () => {
@@ -70,10 +74,8 @@ describe("Error", () => {
             comments: [],
         });
 
-        render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />);
-
-        expect(screen.queryByText(/Error/i))
-            .not.toBeInTheDocument();
+        expect(() => render(<EditBlogPostForm useAllData={mockUseAllData} updateBlogPut={() => {}} getBearerToken={() => "Bearer testToken"} deletePost={() => ({})} deleteComment={() => ({})} />))
+            .not.toThrow();
     })
 })
 
