@@ -11,6 +11,10 @@ const Blogs = ({ useAllData, getBearerToken }) => {
         return <h1 className="loading">Loading...</h1>
     }
 
+    if (error) {
+        throw error;
+    }
+
     const links = [
         {
             name: "Blogs",
