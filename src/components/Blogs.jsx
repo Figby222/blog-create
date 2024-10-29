@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
 
 const Blogs = ({ useAllData, getBearerToken }) => {
@@ -7,11 +7,17 @@ const Blogs = ({ useAllData, getBearerToken }) => {
 
     const { error, loading, data } = useAllData(bearerToken);
 
+    const navigate = useNavigate();
+
     if (loading) {
         return <h1 className="loading">Loading...</h1>
     }
 
     if (error) {
+        if (error.status === 401) {
+            navigate("/log-in");
+            return;
+        }
         throw error;
     }
 
