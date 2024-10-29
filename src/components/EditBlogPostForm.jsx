@@ -24,6 +24,11 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     }
 
     if (error) {
+        if (error.status === 401) {
+            navigate("/log-in");
+            return;
+        }
+        
         throw error;
         
     }
