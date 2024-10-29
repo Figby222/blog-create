@@ -16,8 +16,17 @@ const useBlogPostData = (postId) => {
             },
             method: "GET"
         })
-            .then((response) => {
-                return response.json();
+            .then(async (response) => {
+
+                const data = await response.json();
+                
+                if (response.status > 400) {
+                    const error = new Error(data.message);
+                    error.status = response.status;
+                    throw error;
+                }
+
+                return data;
             })
             .then((response) => {
                 setData({
@@ -50,6 +59,12 @@ const updateBlogPut = async (postId, title, text, shouldPublish, bearerToken) =>
     
         const data = await response.json();
 
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
+        }
+
         console.log(data);
 
         return { data, errors: data.errors }
@@ -75,6 +90,12 @@ const createBlogPost = async (title, text, shouldPublish, bearerToken) => {
         });
     
         const data = await response.json();
+        
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
+        }
         console.log(data);
         return { data, errors: data.errors }
     } catch(err) {
@@ -96,6 +117,12 @@ const deletePost = async (postId, bearerToken) => {
         });
     
         const data = await response.json();
+
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
+        }
 
         console.log(data);
 
@@ -120,6 +147,12 @@ const createAnAccount = async (username, email, password, confirmPassword) => {
         });
     
         const data = await response.json();
+
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
+        }
 
         console.log(data);
 
@@ -148,13 +181,10 @@ const logInUser = async (username, email, password) => {
         const data = await response.json()
         
         console.log(data);
-        if (response.status >= 400) {
-            return { errors: [
-                {
-                    path: "all",
-                    msg: data.message
-                }
-            ]}
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
         }
         
         const authToken = response.headers.get("Authorization");
@@ -182,6 +212,12 @@ const deleteComment = async (postId, commentId, bearerToken) => {
     
         const data = await response.json();
 
+        if (response.status > 400) {
+            const error = new Error(data.message);
+            error.status = response.status;
+            throw error;
+        }
+
         return { data }
     } catch(err) {
         return { errors: [
@@ -207,8 +243,15 @@ const useBlogsListData = (bearerToken) => {
                 "Authorization": bearerToken,
             }
          })
-            .then((response) => {
-                return response.json();
+            .then(async (response) => {
+                const data = await response.json();
+
+                if(response.status > 400) {
+                    const error = new Error(data.message);
+                    error.status = response.status;
+                    throw error;
+                }
+                return data;
             })
             .then((response) => {
                 setData(response)
