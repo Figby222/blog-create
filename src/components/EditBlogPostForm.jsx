@@ -17,7 +17,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     }
 
     if (error) {
-        return <h1 className="error">An error has occurred</h1>
+        throw error;
+        
     }
 
     const onSubmit = async (title, text, isPublishInputChecked) => {
