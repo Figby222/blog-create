@@ -220,9 +220,9 @@ const deleteComment = async (postId, commentId, bearerToken) => {
 
         return { data }
     } catch(err) {
-        return { 
-            error: err 
-        }
+        return {
+            error: err
+        };
     }
 }
 

@@ -4,7 +4,7 @@ import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Form from "./Form.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost, deleteComment }) => {
@@ -12,6 +12,8 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
     const [ submitError, setSubmitError ] = useState(false);
+
+    const navigate = useNavigate();
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
@@ -34,6 +36,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         response.errors && setErrors(response.errors);
 
         if (response.error) {
+            if (response.error.status === 401) {
+                navigate("/log-in");
+                return;
+            }
             setSubmitError(response.error);
         }
     }
@@ -44,6 +50,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         const response = await deletePost(postId, bearerToken);
 
         if(response.error) {
+            if (response.error.status === 401) {
+                navigate("/log-in");
+                return;
+            }
             setSubmitError(response.error);
         }
     }
@@ -54,6 +64,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         const response = await deleteComment(postId, commentId, bearerToken)
 
         if (response.error) {
+            if (response.error.status === 401) {
+                navigate("/log-in");
+                return;
+            }
             setSubmitError(response.error);
         }
     }
