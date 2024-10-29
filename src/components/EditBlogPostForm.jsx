@@ -16,7 +16,10 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     if (loading) {
         return <h1 className="loading">Loading</h1>
     }
-    
+
+    if (submitError) {
+        throw submitError;
+    }
 
     if (error) {
         throw error;
