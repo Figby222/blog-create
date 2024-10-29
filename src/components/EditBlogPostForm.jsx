@@ -11,10 +11,12 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const { postId } = useParams();
     const { error, loading, data} = useAllData(postId);
     const [ errors, setErrors ] = useState([]);
+    const [ submitError, setSubmitError ] = useState(false);
     
     if (loading) {
         return <h1 className="loading">Loading</h1>
     }
+    
 
     if (error) {
         throw error;
@@ -27,18 +29,30 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
         const response = await updateBlogPut(postId, title, text, isPublishInputChecked, bearerToken);
 
         response.errors && setErrors(response.errors);
+
+        if (response.error) {
+            setSubmitError(response.error);
+        }
     }
 
     const onDelete = async () => {
         const bearerToken = getBearerToken();
 
         const response = await deletePost(postId, bearerToken);
+
+        if(response.error) {
+            setSubmitError(response.error);
+        }
     }
 
     const onDeleteComment = async (commentId) => {
         const bearerToken = getBearerToken();
 
         const response = await deleteComment(postId, commentId, bearerToken)
+
+        if (response.error) {
+            setSubmitError(response.error);
+        }
     }
 
     const links = [
