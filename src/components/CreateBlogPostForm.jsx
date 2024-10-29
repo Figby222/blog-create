@@ -9,6 +9,10 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
     const [ submitError, setSubmitError ] = useState(false);
 
+    if (submitError) {
+        throw submitError;
+    }
+
     const onSubmit = async (title, text, isPublishInputChecked) => {
         const bearerToken = getBearerToken();
 
