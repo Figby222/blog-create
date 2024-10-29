@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
 
 
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
     const [ submitError, setSubmitError ] = useState(false);
+    const navigate = useNavigate();
 
     if (submitError) {
         throw submitError;
@@ -21,6 +22,10 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
         response.errors && setErrors(response.errors);
 
         if (response.error) {
+            if (response.error.status === 401) {
+                navigate("/log-in");
+                return;
+            }
             setSubmitError(response.error)
         }
     }
