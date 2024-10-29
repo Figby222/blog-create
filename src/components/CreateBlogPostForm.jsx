@@ -7,6 +7,7 @@ import Header from "./Header.jsx";
 
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
+    const [ submitError, setSubmitError ] = useState(false);
 
     const onSubmit = async (title, text, isPublishInputChecked) => {
         const bearerToken = getBearerToken();
@@ -14,6 +15,10 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
         const response = await createBlogPost(title, text, isPublishInputChecked, bearerToken);
 
         response.errors && setErrors(response.errors);
+
+        if (response.error) {
+            setSubmitError(response.error)
+        }
     }
 
     const links = [
