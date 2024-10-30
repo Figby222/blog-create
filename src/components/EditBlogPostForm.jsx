@@ -81,7 +81,7 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     const links = [
         {
             name: "Blogs",
-            path: "/posts",
+            path: "/",
             isCurrentPage: false,
         },
         {

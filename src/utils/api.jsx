@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const apiLink = "http://localhost:6464/api/v1";
+const apiLink = "https://blogapi.online/api/v1";
+
 
 const useBlogPostData = (postId) => {
     const [ error, setError ] = useState(false);

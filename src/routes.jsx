@@ -11,7 +11,7 @@ import ErrorPage from "./components/ErrorPage.jsx";
 const routes = [
     {
         path: "/",
-        element: <App />,
+        element: <Blogs useAllData={useBlogsListData} getBearerToken={getBearerToken} />,
         errorElement: <ErrorPage />
     },
     {
@@ -34,13 +34,13 @@ const routes = [
         element: <LogInPage storeBearerToken={storeBearerToken} logInUser={logInUser} />,
         errorElement: <ErrorPage />
     },
-    {
-        path: "/posts",
-        element: <Blogs useAllData={useBlogsListData} getBearerToken={getBearerToken} />,
-        errorElement: <ErrorPage />
-    }
     
 ];
+
+
+
+
+
 
 
 export default routes;

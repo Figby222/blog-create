@@ -25,7 +25,7 @@ const Blogs = ({ useAllData, getBearerToken }) => {
     const links = [
         {
             name: "Blogs",
-            path: "/posts",
+            path: "/",
             isCurrentPage: true,
         },
         {

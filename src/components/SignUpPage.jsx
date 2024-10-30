@@ -30,7 +30,7 @@ const SignUpPage = ({ createAnAccount }) => {
     const links = [
         {
             name: "Blogs",
-            path: "/posts",
+            path: "/",
             isCurrentPage: false,
         },
         {
