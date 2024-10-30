@@ -42,4 +42,8 @@ form {
     .title {
         text-align: center;
     }
+
+    .textbox-label {
+        text-align: center;
+    }
 }
