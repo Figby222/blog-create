@@ -1,3 +1,4 @@
-body {
-    background-color: blue;
-}
+label { display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 5px;
+    align-content: space-evenly }
