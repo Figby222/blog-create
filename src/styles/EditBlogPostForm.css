@@ -71,4 +71,8 @@ form {
     .BlogForm-form {
         gap: 46px;
     }
+
+    .comments {
+        gap: 24px;
+    }
 }
