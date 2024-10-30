@@ -26,6 +26,7 @@ form {
 
     .textbox-label {
         text-align: center;
+        grid-template-rows: auto 100px;
     }
 
 }
