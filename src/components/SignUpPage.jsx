@@ -4,6 +4,7 @@ import { useState } from "react";
 import Errors from "./Errors.jsx"
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
+import "../styles/SignUpPage.css";
 
 const SignUpPage = ({ createAnAccount }) => {
     const [ username, setUsername ] = useState("");
