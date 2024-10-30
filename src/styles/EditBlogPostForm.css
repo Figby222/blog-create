@@ -67,4 +67,8 @@ form {
     main {
         gap: 46px;
     }
+
+    .BlogForm-form {
+        gap: 46px;
+    }
 }
