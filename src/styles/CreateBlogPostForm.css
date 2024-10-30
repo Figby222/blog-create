@@ -1,4 +1,10 @@
-label { display: grid;
+label { 
+    display: grid;
     grid-template-rows: repeat(2, auto);
     gap: 5px;
-    align-content: space-evenly }
+    align-content: space-evenly 
+}
+
+.publish-status {
+    display: block;
+}
