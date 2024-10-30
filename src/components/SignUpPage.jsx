@@ -14,7 +14,9 @@ const SignUpPage = ({ createAnAccount }) => {
     const [ errors, setErrors ] = useState([]);
     const navigate = useNavigate();
 
-    const handleFormSubmission = async (username, email, password, confirmPassword) => {
+    const handleFormSubmission = async (e,username, email, password, confirmPassword) => {
+        e.preventDefault();
+        
         const response = await createAnAccount(username, email, password, confirmPassword);
         
         if (response.errors) {
@@ -52,7 +54,7 @@ const SignUpPage = ({ createAnAccount }) => {
         <>
             <Header links={links} loggedInUser={null} />
             <main className="SignUpPage-main">
-                <Form submitListener={() => handleFormSubmission(username, email, password, confirmPassword)} submitButtonText={"Submit"}>
+                <form className="SignUpPage-form" submitListener={(e) => handleFormSubmission(e, username, email, password, confirmPassword)} submitButtonText={"Submit"}>
                     <div className="username-container">
                         <label htmlFor="username" className="username">
                             Username
@@ -98,8 +100,8 @@ const SignUpPage = ({ createAnAccount }) => {
                             <Errors errors={errors.filter((error) => error.path.toLowerCase() === "confirm_password")} />
                         </section>
                     </div>
-
-                </Form>
+                    <button type="submit" className="SignUpPage-submit">Submit</button>
+                </form>
             </main>
         </>
     )
