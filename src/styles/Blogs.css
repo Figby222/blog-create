@@ -1,3 +1,33 @@
-body {
-    background-color: blue;
+.blogs-list {
+    display: grid;
+    grid-template-rows: repeat(auto, auto);
+    gap: 15px;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.blog {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgb(75, 75, 75);
+}
+
+.blog-link {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+    padding: 5px 10px;
+
+    padding-bottom: 20px;
+}
+.username {
+    color: black;
+}
+
+.blog-title {
+    color: rgb(61, 61, 61);
+}
+
+.blog:hover {
+    background-color: rgb(0, 194, 253);
 }
