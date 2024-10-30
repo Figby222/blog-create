@@ -19,4 +19,8 @@ form {
     .BlogForm-form {
         gap: 24px;
     }
+
+    .title {
+        text-align: center;
+    }
 }
