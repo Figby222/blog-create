@@ -3,8 +3,7 @@ import BlogForm from "./BlogForm.jsx";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
-
-
+import "../styles/CreateBlogPostForm.css";
 const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const [ errors, setErrors ] = useState([]);
     const [ submitError, setSubmitError ] = useState(false);
