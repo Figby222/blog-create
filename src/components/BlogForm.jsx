@@ -17,7 +17,7 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
 
     return (
         <>
-            <form onSubmit={(e) => onFormSubmit(e)}>
+            <form className="BlogForm-form" onSubmit={(e) => onFormSubmit(e)}>
                 <section className="errors" style={{ display: errors.length ? "block" : "none" }}>
                     <Errors errors={errors} />
                 </section>
