@@ -54,7 +54,7 @@ const SignUpPage = ({ createAnAccount }) => {
         <>
             <Header links={links} loggedInUser={null} />
             <main className="SignUpPage-main">
-                <form className="SignUpPage-form" submitListener={(e) => handleFormSubmission(e, username, email, password, confirmPassword)} submitButtonText={"Submit"}>
+                <form className="SignUpPage-form" onSubmit={(e) => handleFormSubmission(e, username, email, password, confirmPassword)} submitButtonText={"Submit"}>
                     <div className="username-container">
                         <label htmlFor="username" className="username">
                             Username

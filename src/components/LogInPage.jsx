@@ -55,7 +55,7 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
         <>
             <Header links={links} loggedInUser={null} />
             <main className="LogInPage-main">
-                <form className="LogInPage-form" submitListener={(e) => submitHandler(e, username, email, password)}>
+                <form className="LogInPage-form" onSubmit={(e) => submitHandler(e, username, email, password)}>
                     <section className="errors">
                         <Errors errors={errors} />
                     </section>
