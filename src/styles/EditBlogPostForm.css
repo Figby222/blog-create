@@ -50,4 +50,8 @@ form {
     .comments-heading {
         text-align: center;
     }
+
+    .comments {
+        gap: 10px;
+    }
 }
