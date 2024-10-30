@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
+import "../styles/Blogs.css"
 
 const Blogs = ({ useAllData, getBearerToken }) => {
     const bearerToken = getBearerToken();
