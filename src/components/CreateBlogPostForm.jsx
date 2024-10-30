@@ -32,7 +32,7 @@ const CreateBlogPostForm = ({ createBlogPost, getBearerToken }) => {
     const links = [
         {
             name: "Blogs",
-            path: "/posts",
+            path: "/",
             isCurrentPage: false,
         },
         {

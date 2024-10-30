@@ -24,14 +24,14 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
 
         if (response.token) {
             storeBearerToken(response.token);
-            navigate("/posts");
+            navigate("/");
         }
     }
 
     const links = [
         {
             name: "Blogs",
-            path: "/posts",
+            path: "/",
             isCurrentPage: false,
         },
         {
