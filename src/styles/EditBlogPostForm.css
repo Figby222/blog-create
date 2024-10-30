@@ -46,4 +46,8 @@ form {
     .textbox-label {
         text-align: center;
     }
+
+    .comments-heading {
+        text-align: center;
+    }
 }
