@@ -8,3 +8,9 @@ label {
 .publish-status {
     display: block;
 }
+
+form {
+    display: grid;
+    grid-template-rows: repeat(auto, auto);
+    gap: 20px;
+}
