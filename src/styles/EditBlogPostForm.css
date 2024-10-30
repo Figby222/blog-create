@@ -33,4 +33,6 @@ form {
     grid-template-rows: repeat(auto, auto);
     align-items: center;
     gap: 4px;
+    
+    border: 2px solid black;
 }
