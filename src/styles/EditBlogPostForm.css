@@ -14,3 +14,8 @@ form {
     grid-template-rows: repeat(auto, auto);
     gap: 20px;
 }
+
+.comments {
+    display: grid;
+    gap: 5px;
+}
