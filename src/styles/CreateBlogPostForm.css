@@ -29,4 +29,9 @@ form {
         grid-template-rows: auto 100px;
     }
 
+    main {
+        display: grid;
+        gap: 20px;
+        grid-template-rows: repeat(3, auto);
+    }
 }
