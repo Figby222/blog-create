@@ -37,3 +37,9 @@ form {
     border: 2px solid black;
     padding: 10px;
 }
+
+@media ( min-width: 600px ) {
+    .title {
+        text-align: center;
+    }
+}
