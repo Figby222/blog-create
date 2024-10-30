@@ -9,9 +9,15 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
     const [ text, setText ] = useState(initialText);
     const [ publishInputChecked, setPublishInputChecked ] = useState(initialPublishedStatus);
 
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+
+        onSubmit(title, text, publishInputChecked);
+    }
+
     return (
         <>
-            <Form submitListener={() => onSubmit(title, text, publishInputChecked)} submitButtonText={"Submit"}>
+            <form onSubmit={(e) => onFormSubmit(e)}>
                 <section className="errors" style={{ display: errors.length ? "block" : "none" }}>
                     <Errors errors={errors} />
                 </section>
@@ -30,7 +36,8 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
                     />
                 </label>
                 <TextBox label={"Text"} placeholder={""} value={text} onChange={(value) => setText(value)} />
-            </Form>
+                <button type="submit">Submit</button>
+            </form>
         </>
     )
 };
