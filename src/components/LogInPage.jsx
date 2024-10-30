@@ -14,6 +14,8 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
     const navigate = useNavigate();
 
     const submitHandler = async (username, email, password) => {
+        e.preventDefault();
+
         const response = await logInUser(username, email, password);
 
         response.errors && setErrors(response.errors);
@@ -53,7 +55,7 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
         <>
             <Header links={links} loggedInUser={null} />
             <main className="LogInPage-main">
-                <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
+                <form className="LogInPage-form" submitListener={(e) => submitHandler(e, username, email, password)}>
                     <section className="errors">
                         <Errors errors={errors} />
                     </section>
@@ -77,12 +79,16 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        
                     </label>
-                </Form>
+                    <button type="submit" className="LogInPage-submit">Submit</button>
+                </form>
             </main>
+
         </>
     )
 };
+
 LogInPage.propTypes = {
     logInUser: PropTypes.func.isRequired,
     storeBearerToken: PropTypes.func.isRequired,
