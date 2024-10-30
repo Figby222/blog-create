@@ -4,10 +4,18 @@ import { Link } from "react-router-dom";
 const Header = ({ links, loggedInUser }) => {
     return (
         <>
-            <h1 className="main-heading">Figby</h1>
-            { links.map((link) => {
-                return <Link key={link.path} to={link.path}>{ link.name }</Link>
-            })}
+            <header>
+                <h1 className="main-heading">Figby</h1>
+                <nav>
+                    <ul className="nav-ul">
+                        { links.map((link) => {
+                            return <li key={link.path}>
+                                    <Link to={link.path}>{ link.name }</Link>
+                            </li>
+                        })}
+                    </ul>
+                </nav>
+            </header>
         </>
     )
 };
