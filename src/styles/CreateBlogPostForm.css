@@ -35,3 +35,9 @@ form {
         grid-template-rows: repeat(3, auto);
     }
 }
+
+@media ( min-width: 1000px ) {
+    main {
+        gap: 46px;
+    }
+}
