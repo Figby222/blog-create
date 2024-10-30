@@ -52,32 +52,34 @@ const LogInPage = ({ logInUser, storeBearerToken }) => {
     return (
         <>
             <Header links={links} loggedInUser={null} />
-            <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
-                <section className="errors">
-                    <Errors errors={errors} />
-                </section>
-                <label className="username" htmlFor="username">
-                    Username
-                    <input type="text" name="username" id="username" 
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
-                <label className="email" htmlFor="email">
-                    Email
-                    <input type="text" name="email" id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-                <label className="password" htmlFor="password">
-                    Password
-                    <input type="password" name="password" id="password" 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-            </Form>
+            <main className="LogInPage-main">
+                <Form submitListener={() => submitHandler(username, email, password)} submitButtonText={"Submit"}>
+                    <section className="errors">
+                        <Errors errors={errors} />
+                    </section>
+                    <label className="username" htmlFor="username">
+                        Username
+                        <input type="text" name="username" id="username" 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </label>
+                    <label className="email" htmlFor="email">
+                        Email
+                        <input type="text" name="email" id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </label>
+                    <label className="password" htmlFor="password">
+                        Password
+                        <input type="password" name="password" id="password" 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </label>
+                </Form>
+            </main>
         </>
     )
 };
