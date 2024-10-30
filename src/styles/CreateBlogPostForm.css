@@ -40,4 +40,8 @@ form {
     main {
         gap: 46px;
     }
+
+    .textbox-label {
+        grid-template-rows: auto 240px;
+    }
 }
