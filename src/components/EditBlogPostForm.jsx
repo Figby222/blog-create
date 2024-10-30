@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Form from "./Form.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header.jsx";
+import "../styles/EditBlogPostForm.css";
 
 const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePost, deleteComment }) => {
     const { postId } = useParams();
