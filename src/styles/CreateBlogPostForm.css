@@ -14,3 +14,9 @@ form {
     grid-template-rows: repeat(auto, auto);
     gap: 20px;
 }
+
+@media ( min-width: 600px ) {
+    .BlogForm-form {
+        gap: 24px;
+    }
+}
