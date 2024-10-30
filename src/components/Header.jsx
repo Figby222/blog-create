@@ -10,7 +10,7 @@ const Header = ({ links, loggedInUser }) => {
                     <ul className="nav-ul">
                         { links.map((link) => {
                             return <li key={link.path} className="nav-li" >
-                                    <Link to={link.path}>{ link.name }</Link>
+                                    <Link to={link.path} className="nav-link">{ link.name }</Link>
                             </li>
                         })}
                     </ul>
