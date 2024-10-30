@@ -12,7 +12,9 @@ const BlogForm = ({ onSubmit, initialTitle, initialText, initialPublishedStatus,
     return (
         <>
             <Form submitListener={() => onSubmit(title, text, publishInputChecked)} submitButtonText={"Submit"}>
-                <Errors errors={errors} />
+                <section className="errors">
+                    <Errors errors={errors} />
+                </section>
                 <label className="title" htmlFor="title">
                     Title
                     <input type="text" name="title" id="title" 
