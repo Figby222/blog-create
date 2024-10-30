@@ -104,21 +104,23 @@ const EditBlogPostForm = ({ useAllData, updateBlogPut, getBearerToken, deletePos
     return (
         <>
             <Header links={links} loggedInUser={null} />
-            <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
-            <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
-            </Form>
-            <section className="comments">
-                <h1 className="comments-heading">Comments</h1>
-                <ul className="comments-ul">
-                    { data.comments.map((comment) => {
-                        return <li className="comment-li" key={comment.id}>
-                            <h2 className="comment-creator">{ comment.creator.username }</h2>
-                            <p className="comment-text">{ comment.text }</p>
-                            <Form submitListener={() => onDeleteComment(comment.id)} submitButtonText={"Delete Comment"}></Form>
-                        </li>
-                    })}
-                </ul>
-            </section>
+            <main>
+                <BlogForm onSubmit={(title, text, isPublishInputChecked) => onSubmit(title, text, isPublishInputChecked)} initialTitle={data.title} initialText={data.text} initialPublishedStatus={data.published} errors={errors} />
+                <Form submitListener={() => onDelete()} submitButtonText={"Delete"}>       
+                </Form>
+                <section className="comments">
+                    <h1 className="comments-heading">Comments</h1>
+                    <ul className="comments-ul">
+                        { data.comments.map((comment) => {
+                            return <li className="comment-li" key={comment.id}>
+                                <h2 className="comment-creator">{ comment.creator.username }</h2>
+                                <p className="comment-text">{ comment.text }</p>
+                                <Form submitListener={() => onDeleteComment(comment.id)} submitButtonText={"Delete Comment"}></Form>
+                            </li>
+                        })}
+                    </ul>
+                </section>
+            </main>
         </>
     )
 };
