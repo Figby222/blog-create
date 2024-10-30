@@ -42,13 +42,16 @@ form {
     .BlogForm-form {
         gap: 24px;
     }
+    
     .title {
         text-align: center;
     }
+
     .textbox-label {
         text-align: center;
         grid-template-rows: auto 100px;
     }
+
     .comments-heading {
         text-align: center;
     }
@@ -67,6 +70,10 @@ form {
 @media ( min-width: 1000px ) {
     main {
         gap: 46px;
+    }
+
+    .textbox-label {
+        grid-template-rows: auto 240px;
     }
 
     .BlogForm-form {
